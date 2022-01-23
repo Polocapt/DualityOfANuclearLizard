@@ -9,12 +9,15 @@ public class Drawing : MonoBehaviour
     Renderer rend;
     Texture2D texture;
     Vector2 LastMousePos;
+    GameObject DrawingSurface;
 
     // Start is called before the first frame update
     void Start()
     {
         pencil = GameObject.FindGameObjectWithTag("Pencil").GetComponent<Pencil>();
-        rend = GetComponent<Renderer>();
+        DrawingSurface = transform.parent.GetComponentInChildren<DrawingSurface>().gameObject;
+
+        rend = DrawingSurface.GetComponent<Renderer>();
         // duplicate the original texture and assign to the material
         texture = Instantiate(rend.material.mainTexture) as Texture2D;
         rend.material.mainTexture = texture;
