@@ -8,6 +8,7 @@ public class StampManager : MonoBehaviour
     bool stamping = false;
     public PaperManager PM;
     public GameObject stampMark;
+    public TaskManager TM;
     float frameLength = 0.02f;
 
     public int wiggleFrames = 100;
@@ -48,6 +49,7 @@ public class StampManager : MonoBehaviour
     IEnumerator Stamp()
     {
         GameObject CurrentPage = PM.CurrentPaper;
+        TM.StampTriggered();
 
         Vector3 pathToCenter = CurrentPage.transform.position - transform.position;
         float distanceToCenter = pathToCenter.magnitude;

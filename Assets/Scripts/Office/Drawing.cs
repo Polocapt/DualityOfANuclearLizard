@@ -12,6 +12,7 @@ public class Drawing : MonoBehaviour
     GameObject DrawingSurface;
     public bool PageSigned = false;
     StampManager stamp;
+    TaskManager TM;
 
     int pixelsCovered = 0;
     public int pixelsNeeded = 140;
@@ -22,6 +23,9 @@ public class Drawing : MonoBehaviour
     {
         pencil = GameObject.FindGameObjectWithTag("Pencil").GetComponent<Pencil>();
         stamp = GameObject.Find("Stamp").GetComponent<StampManager>();
+        TM = GameObject.Find("TaskManager").GetComponent<TaskManager>();
+        TM.StartSigningPaper();
+
         stamp.StampingEnabled = false;
         DrawingSurface = transform.parent.GetComponentInChildren<DrawingSurface>().gameObject;
 
@@ -128,6 +132,8 @@ public class Drawing : MonoBehaviour
 
             
         }
+
+        TM.UpdatePaperSigningProgress((100 * pixelsCovered) / pixelsNeeded);
     }
 
     Vector2[] GetBrushPixels (int inputx, int inputy)
