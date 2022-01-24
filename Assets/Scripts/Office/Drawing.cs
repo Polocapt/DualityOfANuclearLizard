@@ -65,8 +65,8 @@ public class Drawing : MonoBehaviour
                     if (Input.GetMouseButton(0))
                     {
                         // mouse is pressed and over paper
-                        if (texture.GetPixel(Mathf.RoundToInt(coord.x), Mathf.RoundToInt(coord.y)).a == 0f)
-                            pixelsCovered++;
+                        //if (texture.GetPixel(Mathf.RoundToInt(coord.x), Mathf.RoundToInt(coord.y)).a == 0f)
+                            
 
                         if (LastMousePos == null)
                         {
@@ -118,6 +118,8 @@ public class Drawing : MonoBehaviour
         {
             t = Vector2.Lerp(p1, p2, ctr);
             ctr += frac;
+
+            pixelsCovered++;
 
             Vector2[] brushpixels = GetBrushPixels((int)t.x, (int)t.y);
 
