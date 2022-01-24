@@ -6,7 +6,7 @@ public class PaperManager : MonoBehaviour
 {
     public GameObject defaultpaper;
     bool paperActive = false;
-    GameObject CurrentPaper;
+    public GameObject CurrentPaper;
     GameObject LastPaper;
     public GameObject PileMarker;
     public float paperAngle;

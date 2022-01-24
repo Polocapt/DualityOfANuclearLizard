@@ -10,6 +10,8 @@ public class Drawing : MonoBehaviour
     Texture2D texture;
     Vector2 LastMousePos;
     GameObject DrawingSurface;
+    public bool PageSigned = false;
+    StampManager stamp;
 
     int pixelsCovered = 0;
     public int pixelsNeeded = 140;
@@ -19,6 +21,8 @@ public class Drawing : MonoBehaviour
     void Start()
     {
         pencil = GameObject.FindGameObjectWithTag("Pencil").GetComponent<Pencil>();
+        stamp = GameObject.Find("Stamp").GetComponent<StampManager>();
+        stamp.StampingEnabled = false;
         DrawingSurface = transform.parent.GetComponentInChildren<DrawingSurface>().gameObject;
 
         rend = DrawingSurface.GetComponent<Renderer>();
@@ -85,17 +89,23 @@ public class Drawing : MonoBehaviour
             }
         }
 
-        if (pixelsCovered > pixelsNeeded && !Input.GetMouseButton(0))
+        if (!PageSigned && pixelsCovered > pixelsNeeded)// && !Input.GetMouseButton(0))
         {
-            // page signing completed
-            if (!exiting)
-            {
-
-                exiting = true;
-                GameObject.Find("PaperManager").GetComponent<PaperManager>().SendPaperToPile();
-            }
+            stamp.ReadyToStamp();
+            PageSigned = true;
         }
         
+    }
+
+    public void FinishDrawing()
+    {
+        // page signing completed
+        if (!exiting)
+        {
+            
+            exiting = true;
+            GameObject.Find("PaperManager").GetComponent<PaperManager>().SendPaperToPile();
+        }
     }
 
     public void DrawLine(Vector2 p1, Vector2 p2, Color col)
