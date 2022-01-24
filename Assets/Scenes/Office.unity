@@ -478,7 +478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 63b7885013f90b2429d00abccae8b0aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.202
+      value: -6.89
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 63b7885013f90b2429d00abccae8b0aa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -635,6 +635,37 @@ MonoBehaviour:
   restAngle: {x: 0, y: 0, z: 0}
   restPosition: {x: 0, y: 0, z: 0}
   drawingAngle: {x: -90, y: 0, z: 0}
+--- !u!1 &899645563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899645564}
+  m_Layer: 0
+  m_Name: StackingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &899645564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899645563}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.91, y: -0.40100002, z: -5.45}
+  m_LocalScale: {x: 0.16497156, y: 0.21334, z: 0.1714315}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1136024134
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,6 +727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultpaper: {fileID: 3916386004829671566, guid: 184a03d5133a0fa43a6e38d12671b7cd, type: 3}
+  PileMarker: {fileID: 899645563}
   paperAngle: 0
 --- !u!4 &1351356682
 Transform:

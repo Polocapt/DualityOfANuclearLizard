@@ -11,6 +11,6 @@ intro: We want to express our appreciation for your dedication and hard work.; N
 
 subject: Your weekends have been removed.; Parties are cancelled from now on.; Next week, your cubicle is getting smaller.; Please be aware we will be trying out new ring tones from 10 AM to 4 PM tomorrow.; Your floor is to undergo renovations for the next month. Stay there and answer the phone.; If you notice new boxes in the basement, don't open them.;
 
-ending: Cheers,; With peace and love,; Do not be alarmed.; Don't forget to smile.; Thank you,;
+ending: Cheers,; With peace and love,; Do not be alarmed.; Don't forget to smile.; Thank you,; Just be aware I guess.;
 
 signature: Best CEO ever!; Head office; Anonymous;

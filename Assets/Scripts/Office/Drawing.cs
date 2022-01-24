@@ -11,6 +11,10 @@ public class Drawing : MonoBehaviour
     Vector2 LastMousePos;
     GameObject DrawingSurface;
 
+    int pixelsCovered = 0;
+    public int pixelsNeeded = 140;
+    bool exiting = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,42 +42,60 @@ public class Drawing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if(Physics.Raycast(ray, out hit))
+        if (!exiting)
         {
-            if (hit.collider.gameObject == gameObject)
+
+        
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
             {
-                // if mouse if over paper, display pencil over paper
-                pencil.gameObject.transform.eulerAngles = pencil.drawingAngle;
-                pencil.gameObject.transform.position = hit.point;
-
-                Vector2 coord = WorldPosToTextureCoord(hit.point);
-
-                if (Input.GetMouseButton(0))
+                if (hit.collider.gameObject == gameObject)
                 {
-                    // mouse is pressed and over paper
-                    
-                    if (LastMousePos == null) {
-                        LastMousePos = coord;
-                        return;
+                    // if mouse if over paper, display pencil over paper
+                    pencil.gameObject.transform.eulerAngles = pencil.drawingAngle;
+                    pencil.gameObject.transform.position = hit.point;
+
+                    Vector2 coord = WorldPosToTextureCoord(hit.point);
+
+                    if (Input.GetMouseButton(0))
+                    {
+                        // mouse is pressed and over paper
+                        if (texture.GetPixel(Mathf.RoundToInt(coord.x), Mathf.RoundToInt(coord.y)).a == 0f)
+                            pixelsCovered++;
+
+                        if (LastMousePos == null)
+                        {
+                            LastMousePos = coord;
+                            return;
+                        }
+
+                        DrawLine(coord, LastMousePos, Color.black);
+                        texture.Apply();
                     }
-                    DrawLine(coord, LastMousePos, Color.black);
-                    texture.Apply();
 
-                    
+                    LastMousePos = coord;
                 }
-
-                LastMousePos = coord;
-            }
-            else
-            {
-                // if mouse is not over paper, put pencil back
-                pencil.gameObject.transform.position = pencil.restPosition;
-                pencil.gameObject.transform.eulerAngles = pencil.restAngle;
+                else
+                {
+                    // if mouse is not over paper, put pencil back
+                    pencil.gameObject.transform.position = pencil.restPosition;
+                    pencil.gameObject.transform.eulerAngles = pencil.restAngle;
+                }
             }
         }
+
+        if (pixelsCovered > pixelsNeeded && !Input.GetMouseButton(0))
+        {
+            // page signing completed
+            if (!exiting)
+            {
+
+                exiting = true;
+                GameObject.Find("PaperManager").GetComponent<PaperManager>().SendPaperToPile();
+            }
+        }
+        
     }
 
     public void DrawLine(Vector2 p1, Vector2 p2, Color col)
