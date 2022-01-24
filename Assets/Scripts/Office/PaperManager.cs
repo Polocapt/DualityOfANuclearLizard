@@ -76,9 +76,7 @@ public class PaperManager : MonoBehaviour
         LastPaper = CurrentPaper;
         CurrentPaper = null;
         paperActive = false;
-        LastPaper.transform.Translate(new Vector3(0f, stackHeight, 0f));
-        stackHeight += stackInterval;
-
+        
         pencil.gameObject.transform.position = pencil.restPosition;
         pencil.gameObject.transform.eulerAngles = pencil.restAngle;
 
@@ -87,15 +85,20 @@ public class PaperManager : MonoBehaviour
 
     IEnumerator StackPaper(GameObject lastpaper)
     {
-        float vel = 0.1f;
+        float vel = 0.2f;
         Vector3 distance = PileMarker.transform.position - lastpaper.transform.position;
-        while (distance.magnitude > 0.2f)
+        int frames = Mathf.RoundToInt(distance.magnitude / vel);
+
+        while (distance.magnitude > 0.1f)
         {
             lastpaper.transform.position += distance.normalized * vel;
-            
+            lastpaper.transform.Translate(new Vector3(0f, stackHeight / frames, 0f));
+
             distance = PileMarker.transform.position - lastpaper.transform.position;
             yield return new WaitForSeconds(frameLength);
         }
+
+        stackHeight += stackInterval;
 
         yield break;
     }
