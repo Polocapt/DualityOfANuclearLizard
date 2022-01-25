@@ -26,8 +26,8 @@ public class CityPlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         _moveInput = _playersControls.City.Movement.ReadValue<Vector2>();
-
         
         _rigidbody.velocity = new Vector3(_moveInput.x, 0, _moveInput.y) * _speed;
+        _rigidbody.transform.LookAt(_rigidbody.position +_rigidbody.velocity);
     }
 }
