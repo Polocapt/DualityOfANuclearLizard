@@ -35,6 +35,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MousePos"",
+                    ""type"": ""Value"",
+                    ""id"": ""5647356b-dc89-4502-a6f4-c27947b42557"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -92,6 +101,72 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Arrow"",
+                    ""id"": ""2e245b1d-920f-4f69-b0bd-aea8c64e15f2"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""4685e52c-d64b-4e8d-a296-9639767fc500"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""6881fb80-9fb1-48e5-80aa-f56ea4a497d7"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""33adc729-7afd-464e-b47d-9b3bfd8d06f8"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""554d78bd-98af-4e60-a7b1-029045b4bf49"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a074f59b-c3c5-438f-a469-154b0c7dde65"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -101,6 +176,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // City
         m_City = asset.FindActionMap("City", throwIfNotFound: true);
         m_City_Movement = m_City.FindAction("Movement", throwIfNotFound: true);
+        m_City_MousePos = m_City.FindAction("MousePos", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -161,11 +237,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_City;
     private ICityActions m_CityActionsCallbackInterface;
     private readonly InputAction m_City_Movement;
+    private readonly InputAction m_City_MousePos;
     public struct CityActions
     {
         private @PlayerControls m_Wrapper;
         public CityActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_City_Movement;
+        public InputAction @MousePos => m_Wrapper.m_City_MousePos;
         public InputActionMap Get() { return m_Wrapper.m_City; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -178,6 +256,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_CityActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_CityActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_CityActionsCallbackInterface.OnMovement;
+                @MousePos.started -= m_Wrapper.m_CityActionsCallbackInterface.OnMousePos;
+                @MousePos.performed -= m_Wrapper.m_CityActionsCallbackInterface.OnMousePos;
+                @MousePos.canceled -= m_Wrapper.m_CityActionsCallbackInterface.OnMousePos;
             }
             m_Wrapper.m_CityActionsCallbackInterface = instance;
             if (instance != null)
@@ -185,6 +266,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @MousePos.started += instance.OnMousePos;
+                @MousePos.performed += instance.OnMousePos;
+                @MousePos.canceled += instance.OnMousePos;
             }
         }
     }
@@ -192,5 +276,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface ICityActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnMousePos(InputAction.CallbackContext context);
     }
 }
