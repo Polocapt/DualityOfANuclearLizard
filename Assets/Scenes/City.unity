@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1713056824}
-  _speed: 20
+  _speed: 50
 --- !u!4 &1025429704
 Transform:
   m_ObjectHideFlags: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.624025, y: 1}
+    m_SensorSize: {x: 3.9178572, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -394,10 +394,9 @@ GameObject:
   - component: {fileID: 1713056820}
   - component: {fileID: 1713056824}
   - component: {fileID: 1713056819}
-  - component: {fileID: 1713056823}
   m_Layer: 0
   m_Name: Godzilla
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -482,20 +481,6 @@ Transform:
   m_Father: {fileID: 1025429704}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1713056823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713056818}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a02d64006d31d58468970b01f987f31f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 1713056824}
-  _speed: 20
 --- !u!54 &1713056824
 Rigidbody:
   m_ObjectHideFlags: 0
