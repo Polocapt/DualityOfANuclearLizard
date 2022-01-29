@@ -1,5 +1,4 @@
-LetterBlab: [dearStaff]; this is a random number <random1>; 
-{myCondition==true} this is only picked when condition is true;
+LetterBlab: [dearStaff];
 
 dearStaff: [greeting], @@[intro] @@[subject] @@[ending] @@[signature];
 
