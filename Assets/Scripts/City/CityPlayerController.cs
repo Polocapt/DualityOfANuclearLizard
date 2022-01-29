@@ -6,6 +6,7 @@ public class CityPlayerController : MonoBehaviour
     [SerializeField] private AttackController _attackController = null;
     [SerializeField] private Rigidbody _rigidbody = null;
     [SerializeField] private float _speed = 1f;
+    [SerializeField] private stepsSFX _stepsSfx;
     
     private PlayerControls _playersControls = null;
     private Vector2 _moveInput = Vector2.zero;
@@ -44,6 +45,7 @@ public class CityPlayerController : MonoBehaviour
 
         if (_playersControls.City.FlyingKick.triggered)
         {
+            _stepsSfx.Stepping = false;
             _isDashing = true;
             _attackController.FlyingKick(AttackingComplete);
         }
@@ -64,8 +66,10 @@ public class CityPlayerController : MonoBehaviour
         if (_isDashing) return;
 
         _moveInput = _playersControls.City.Movement.ReadValue<Vector2>();
-        
+
+        _stepsSfx.Stepping = _moveInput.sqrMagnitude > 0.1f;
+
         _rigidbody.velocity = new Vector3(_moveInput.x, 0, _moveInput.y) * _speed;
-        _rigidbody.transform.LookAt(_rigidbody.position +_rigidbody.velocity);
+        _rigidbody.transform.LookAt(_rigidbody.position + _rigidbody.velocity);
     }
 }

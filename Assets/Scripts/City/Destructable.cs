@@ -6,6 +6,9 @@ public class Destructable : MonoBehaviour
     {
         if (!other.tag.Equals("Player")) return;
         
+        FindObjectOfType<RandomSFX>().TriggerRandomSound();
+        
         Destroy(gameObject);
+        
     }
 }
