@@ -13,6 +13,7 @@ public class PaperManager : MonoBehaviour
     float frameLength = 0.02f;
     float stackHeight = 0f;
     float stackInterval = 0.04f;
+    public bool stopIt = false;
     Pencil pencil;
 
     // Start is called before the first frame update

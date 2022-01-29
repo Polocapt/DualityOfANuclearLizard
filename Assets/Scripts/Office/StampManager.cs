@@ -74,6 +74,9 @@ public class StampManager : MonoBehaviour
 
         frames = halfFrames;
 
+        // trigger sfx
+        gameObject.GetComponent<AudioSource>().Play();
+
         // pause for a sec
         yield return new WaitForSeconds(0.2f);
 

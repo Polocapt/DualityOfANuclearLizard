@@ -10,14 +10,20 @@ public class TaskManager : MonoBehaviour
     public CounterHandler TimeDisplay;
     public GameObject StampToContinuePrompt;
     public GameObject dark_panel;
+    public PaperManager PM;
+    public GameObject OutdoorLight;
+    Vector3 LightPos;
 
-    int rage = 0;
+    public float deltaLightPos = 0.03f;
+
+    public int rage = 0;
     
     public float MinuteLength = 0.4f;
     
     // Start is called before the first frame update
     void Start()
     {
+        LightPos = OutdoorLight.transform.position;
         StartCoroutine(UpdateTime());    
     }
 
@@ -61,6 +67,9 @@ public class TaskManager : MonoBehaviour
                 dayIsOver = true;
             }
 
+            LightPos.y -= deltaLightPos;
+            OutdoorLight.transform.position = LightPos;
+
             // wait for tick and continue
             yield return new WaitForSeconds(MinuteLength);
         }
@@ -68,29 +77,41 @@ public class TaskManager : MonoBehaviour
         // the day is over!
         TimeDisplay.SetString("5:00 PM");
 
+        PaperPercent.gameObject.SetActive(false);
+        StampToContinuePrompt.gameObject.SetActive(false);
+        PM.stopIt = true;
+
         // fade in dark panel
         //Material mat = 
         Color c = dark_panel.GetComponent<UnityEngine.UI.Image>().color;
-
+        AudioSource bgm = GameObject.Find("sfx").GetComponent<AudioSource>();
         float alpha = c.a;
 
         while (alpha < 1f)
         {
             alpha += 0.05f;
+            bgm.volume = 1f - alpha;
             c.a = alpha;
             dark_panel.GetComponent<UnityEngine.UI.Image>().color = c;
             //mat.color = c;
-
+            
             yield return new WaitForSeconds(0.1f);
         }
+
+        GameObject.Find("door_sfx").GetComponent<AudioSource>().Play();
+        bgm.Stop();
 
         yield break;
     }
 
     public void StartSigningPaper()
     {
-        PaperPercent.gameObject.SetActive(true);
-        PaperPercent.SetCounterPercent(0);
+        if (!PM.stopIt)
+        {
+            PaperPercent.gameObject.SetActive(true);
+            PaperPercent.SetCounterPercent(0);
+        }
+        
     }
 
     public void UpdatePaperSigningProgress(float percent)
@@ -103,15 +124,20 @@ public class TaskManager : MonoBehaviour
 
     void ShowStampPrompt()
     {
-        StampToContinuePrompt.SetActive(true);
-        PaperPercent.gameObject.SetActive(false);
+        if (!PM.stopIt)
+        {
+            StampToContinuePrompt.SetActive(true);
+            PaperPercent.gameObject.SetActive(false);
+        }
+        
     }
 
     public void StampTriggered()
     {
+
         StampToContinuePrompt.SetActive(false);
 
         rage++;
-        RageCounter.SetCounter(rage);
+        
     }
 }

@@ -14,6 +14,8 @@ public class Drawing : MonoBehaviour
     StampManager stamp;
     TaskManager TM;
 
+    granulator granu;
+
     int pixelsCovered = 0;
     public int pixelsNeeded = 140;
     bool exiting = false;
@@ -21,6 +23,7 @@ public class Drawing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        granu = GameObject.Find("granulator").GetComponent<granulator>();
         pencil = GameObject.FindGameObjectWithTag("Pencil").GetComponent<Pencil>();
         stamp = GameObject.Find("Stamp").GetComponent<StampManager>();
         TM = GameObject.Find("TaskManager").GetComponent<TaskManager>();
@@ -70,7 +73,7 @@ public class Drawing : MonoBehaviour
                     {
                         // mouse is pressed and over paper
                         //if (texture.GetPixel(Mathf.RoundToInt(coord.x), Mathf.RoundToInt(coord.y)).a == 0f)
-                            
+                        granu.playing = true;
 
                         if (LastMousePos == null)
                         {
@@ -81,6 +84,7 @@ public class Drawing : MonoBehaviour
                         DrawLine(coord, LastMousePos, Color.black);
                         texture.Apply();
                     }
+                    else granu.playing = false;
 
                     LastMousePos = coord;
                 }
@@ -124,6 +128,8 @@ public class Drawing : MonoBehaviour
             ctr += frac;
 
             pixelsCovered++;
+            TM.rage++;
+            TM.RageCounter.SetCounter(TM.rage/10);
 
             Vector2[] brushpixels = GetBrushPixels((int)t.x, (int)t.y);
 
