@@ -9,6 +9,7 @@ public class TaskManager : MonoBehaviour
     public CounterHandler RageCounter;
     public CounterHandler TimeDisplay;
     public GameObject StampToContinuePrompt;
+    public GameObject dark_panel;
 
     int rage = 0;
     
@@ -28,6 +29,10 @@ public class TaskManager : MonoBehaviour
         int minutes = 0;
         int hours = 9;
         string AMPM = "AM";
+
+
+        
+
 
         while (!dayIsOver)
         {
@@ -62,6 +67,22 @@ public class TaskManager : MonoBehaviour
 
         // the day is over!
         TimeDisplay.SetString("5:00 PM");
+
+        // fade in dark panel
+        //Material mat = 
+        Color c = dark_panel.GetComponent<UnityEngine.UI.Image>().color;
+
+        float alpha = c.a;
+
+        while (alpha < 1f)
+        {
+            alpha += 0.05f;
+            c.a = alpha;
+            dark_panel.GetComponent<UnityEngine.UI.Image>().color = c;
+            //mat.color = c;
+
+            yield return new WaitForSeconds(0.1f);
+        }
 
         yield break;
     }
