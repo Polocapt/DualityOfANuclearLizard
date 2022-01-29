@@ -15,13 +15,31 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MousePos",
-                    "type": "Value",
-                    "id": "5647356b-dc89-4502-a6f4-c27947b42557",
-                    "expectedControlType": "Vector2",
+                    "name": "Slash",
+                    "type": "Button",
+                    "id": "d3cab5cc-8f89-4577-b10e-c2fe8f99818d",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "FlyingKick",
+                    "type": "Button",
+                    "id": "e36f1954-f15f-4806-b6af-03fa1645049a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Beam",
+                    "type": "Button",
+                    "id": "8a4e4674-0e11-4226-b6a1-d84e2183b4a6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -137,12 +155,34 @@
                 },
                 {
                     "name": "",
-                    "id": "a074f59b-c3c5-438f-a469-154b0c7dde65",
-                    "path": "<Mouse>/position",
+                    "id": "9f5ca4c0-e655-461c-b9bf-eb246ef6cee3",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MousePos",
+                    "action": "FlyingKick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3b70b78-a227-427b-a748-161c581b0791",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21e32155-d86a-4504-8d8f-11488a036b2a",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Beam",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -246,6 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02d64006d31d58468970b01f987f31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackController: {fileID: 1713056825}
   _rigidbody: {fileID: 1713056824}
   _speed: 50
 --- !u!4 &1025429704
@@ -310,7 +311,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 3.9178572, y: 1}
+    m_SensorSize: {x: 3.8491228, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -394,6 +395,7 @@ GameObject:
   - component: {fileID: 1713056820}
   - component: {fileID: 1713056824}
   - component: {fileID: 1713056819}
+  - component: {fileID: 1713056825}
   m_Layer: 0
   m_Name: Godzilla
   m_TagString: Player
@@ -489,14 +491,29 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713056818}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 500
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1713056825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713056818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b5b1968d785afb4696a5a2303ef81b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 1713056824}
+  _dashSpeed: 120
+  _dashDuration: 2
 --- !u!1 &1742183801
 GameObject:
   m_ObjectHideFlags: 3
@@ -507,8 +524,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1742183802}
   - component: {fileID: 1742183805}
-  - component: {fileID: 1742183804}
   - component: {fileID: 1742183803}
+  - component: {fileID: 1742183806}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -545,15 +562,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 0
   m_FollowOffset: {x: 1, y: 30, z: -25}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 0.5
+  m_YDamping: 0.5
+  m_ZDamping: 0.5
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
---- !u!114 &1742183804
+--- !u!114 &1742183805
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742183801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1742183806
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -573,25 +602,13 @@ MonoBehaviour:
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
+  m_DeadZoneWidth: 0.5
+  m_DeadZoneHeight: 0.5
   m_SoftZoneWidth: 0.8
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
---- !u!114 &1742183805
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742183801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2006074634
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,7 +713,7 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 1
+    m_Style: 2
     m_Time: 2
     m_CustomCurve:
       serializedVersion: 2

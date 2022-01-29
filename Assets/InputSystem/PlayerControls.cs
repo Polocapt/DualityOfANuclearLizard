@@ -37,13 +37,31 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""MousePos"",
-                    ""type"": ""Value"",
-                    ""id"": ""5647356b-dc89-4502-a6f4-c27947b42557"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""name"": ""Slash"",
+                    ""type"": ""Button"",
+                    ""id"": ""d3cab5cc-8f89-4577-b10e-c2fe8f99818d"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FlyingKick"",
+                    ""type"": ""Button"",
+                    ""id"": ""e36f1954-f15f-4806-b6af-03fa1645049a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Beam"",
+                    ""type"": ""Button"",
+                    ""id"": ""8a4e4674-0e11-4226-b6a1-d84e2183b4a6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -159,12 +177,34 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a074f59b-c3c5-438f-a469-154b0c7dde65"",
-                    ""path"": ""<Mouse>/position"",
+                    ""id"": ""9f5ca4c0-e655-461c-b9bf-eb246ef6cee3"",
+                    ""path"": ""<Keyboard>/k"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MousePos"",
+                    ""action"": ""FlyingKick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c3b70b78-a227-427b-a748-161c581b0791"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Slash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""21e32155-d86a-4504-8d8f-11488a036b2a"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Beam"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -176,7 +216,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // City
         m_City = asset.FindActionMap("City", throwIfNotFound: true);
         m_City_Movement = m_City.FindAction("Movement", throwIfNotFound: true);
-        m_City_MousePos = m_City.FindAction("MousePos", throwIfNotFound: true);
+        m_City_Slash = m_City.FindAction("Slash", throwIfNotFound: true);
+        m_City_FlyingKick = m_City.FindAction("FlyingKick", throwIfNotFound: true);
+        m_City_Beam = m_City.FindAction("Beam", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -237,13 +279,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_City;
     private ICityActions m_CityActionsCallbackInterface;
     private readonly InputAction m_City_Movement;
-    private readonly InputAction m_City_MousePos;
+    private readonly InputAction m_City_Slash;
+    private readonly InputAction m_City_FlyingKick;
+    private readonly InputAction m_City_Beam;
     public struct CityActions
     {
         private @PlayerControls m_Wrapper;
         public CityActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_City_Movement;
-        public InputAction @MousePos => m_Wrapper.m_City_MousePos;
+        public InputAction @Slash => m_Wrapper.m_City_Slash;
+        public InputAction @FlyingKick => m_Wrapper.m_City_FlyingKick;
+        public InputAction @Beam => m_Wrapper.m_City_Beam;
         public InputActionMap Get() { return m_Wrapper.m_City; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -256,9 +302,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_CityActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_CityActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_CityActionsCallbackInterface.OnMovement;
-                @MousePos.started -= m_Wrapper.m_CityActionsCallbackInterface.OnMousePos;
-                @MousePos.performed -= m_Wrapper.m_CityActionsCallbackInterface.OnMousePos;
-                @MousePos.canceled -= m_Wrapper.m_CityActionsCallbackInterface.OnMousePos;
+                @Slash.started -= m_Wrapper.m_CityActionsCallbackInterface.OnSlash;
+                @Slash.performed -= m_Wrapper.m_CityActionsCallbackInterface.OnSlash;
+                @Slash.canceled -= m_Wrapper.m_CityActionsCallbackInterface.OnSlash;
+                @FlyingKick.started -= m_Wrapper.m_CityActionsCallbackInterface.OnFlyingKick;
+                @FlyingKick.performed -= m_Wrapper.m_CityActionsCallbackInterface.OnFlyingKick;
+                @FlyingKick.canceled -= m_Wrapper.m_CityActionsCallbackInterface.OnFlyingKick;
+                @Beam.started -= m_Wrapper.m_CityActionsCallbackInterface.OnBeam;
+                @Beam.performed -= m_Wrapper.m_CityActionsCallbackInterface.OnBeam;
+                @Beam.canceled -= m_Wrapper.m_CityActionsCallbackInterface.OnBeam;
             }
             m_Wrapper.m_CityActionsCallbackInterface = instance;
             if (instance != null)
@@ -266,9 +318,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
-                @MousePos.started += instance.OnMousePos;
-                @MousePos.performed += instance.OnMousePos;
-                @MousePos.canceled += instance.OnMousePos;
+                @Slash.started += instance.OnSlash;
+                @Slash.performed += instance.OnSlash;
+                @Slash.canceled += instance.OnSlash;
+                @FlyingKick.started += instance.OnFlyingKick;
+                @FlyingKick.performed += instance.OnFlyingKick;
+                @FlyingKick.canceled += instance.OnFlyingKick;
+                @Beam.started += instance.OnBeam;
+                @Beam.performed += instance.OnBeam;
+                @Beam.canceled += instance.OnBeam;
             }
         }
     }
@@ -276,6 +334,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface ICityActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnMousePos(InputAction.CallbackContext context);
+        void OnSlash(InputAction.CallbackContext context);
+        void OnFlyingKick(InputAction.CallbackContext context);
+        void OnBeam(InputAction.CallbackContext context);
     }
 }

@@ -13,13 +13,10 @@ public class CityTileTrigger : MonoBehaviour
         _callback = callback;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<CityPlayerController>() != null)
-        {
-            return;
-        }
-        
+        if (!other.tag.Equals("Player")) return;
+
         var velocity = other.gameObject.GetComponent<Rigidbody>().velocity;
         _callback((_i, _j), new Vector2(velocity.x, velocity.z));
     }
