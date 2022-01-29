@@ -6,15 +6,17 @@ public class AttackController : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody;
     
+    [Header("Slash Parameters")]
+    [SerializeField] private float _slashAttackSpeed;
+    [SerializeField] private float _slashRadius;
+    
+    [Header("Beam Parameters")]
+    [SerializeField] private float _beamRange;
+    [SerializeField] private float _beamWidth;
+
     [Header("Dash Parameters")]
     [SerializeField] private float _dashSpeed;
-    [SerializeField] private int _dashDuration;
-    
-    public void FireBeam(Action callback)
-    {
-        Debug.Log("BEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEAAAAAM");
-        callback();
-    }
+    [SerializeField] private float _dashDuration;
     
     public void Slash(Action callback)
     {
@@ -24,9 +26,9 @@ public class AttackController : MonoBehaviour
     
     public void FlyingKick(Action callback)
     {
-        StartCoroutine(Dash(callback));
+        StartCoroutine(StartFlyingKick(callback));
     }
-    private IEnumerator Dash( Action callback)
+    private IEnumerator StartFlyingKick( Action callback)
     {
         _rigidbody.velocity = transform.forward * _dashSpeed;
         
@@ -38,6 +40,12 @@ public class AttackController : MonoBehaviour
         _rigidbody.useGravity = true;
         transform.Rotate(new Vector3(90, 0, 0));
         
+        callback();
+    }
+    
+    public void FireBeam(Action callback)
+    {
+        Debug.Log("BEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEAAAAAM");
         callback();
     }
 }

@@ -512,8 +512,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1713056824}
-  _dashSpeed: 120
-  _dashDuration: 2
+  _dashSpeed: 90
+  _dashDuration: 1.5
 --- !u!1 &1742183801
 GameObject:
   m_ObjectHideFlags: 3
