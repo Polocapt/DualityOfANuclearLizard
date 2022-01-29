@@ -10,7 +10,8 @@ public class CityPlayerController : MonoBehaviour
     private PlayerControls _playersControls = null;
     private Vector2 _moveInput = Vector2.zero;
 
-    private bool _isAttacking = false;
+    private bool _isDashing = false;
+    private bool _isBeaming = false;
 
     private void Awake()
     {
@@ -29,41 +30,38 @@ public class CityPlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (_isAttacking)
+        if (_isDashing || _isBeaming)
         {
             return;
         }
-        
-        if (_playersControls.City.Slash.triggered)
-        {
-            _isAttacking = true;
-            _attackController.Slash(AttackingComplete);
-            return;
-        }
-        
+
         if (_playersControls.City.Beam.triggered)
         {
-            _isAttacking = true;
-            _attackController.FireBeam(AttackingComplete);
+            _isBeaming = true;
+            _attackController.FireBeam(BeamComplete);
             return;
         }
 
         if (_playersControls.City.FlyingKick.triggered)
         {
-            _isAttacking = true;
+            _isDashing = true;
             _attackController.FlyingKick(AttackingComplete);
-            return;
         }
     }
 
+    private void BeamComplete()
+    {
+        _isBeaming = false;
+    }
+    
     private void AttackingComplete()
     {
-        _isAttacking = false;
+        _isDashing = false;
     }
 
     private void FixedUpdate()
     {
-        if (_isAttacking) return;
+        if (_isDashing) return;
 
         _moveInput = _playersControls.City.Movement.ReadValue<Vector2>();
         

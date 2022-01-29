@@ -12,7 +12,7 @@ public class CityTileTrigger : MonoBehaviour
         _j = j;
         _callback = callback;
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (!other.tag.Equals("Player")) return;

@@ -5,30 +5,28 @@ using UnityEngine;
 public class AttackController : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody;
-    
-    [Header("Slash Parameters")]
-    [SerializeField] private float _slashAttackSpeed;
-    [SerializeField] private float _slashRadius;
-    
+
     [Header("Beam Parameters")]
+    [SerializeField] private LaserBeam _laserBeam;
     [SerializeField] private float _beamRange;
-    [SerializeField] private float _beamWidth;
+    [SerializeField] private float _beamStartWidth;
+    [SerializeField] private float _beamEndWidth;
+    [SerializeField] private float _beamDuration;
 
     [Header("Dash Parameters")]
     [SerializeField] private float _dashSpeed;
     [SerializeField] private float _dashDuration;
-    
-    public void Slash(Action callback)
+
+    private void Start()
     {
-        Debug.Log("Slash");
-        callback();
+        _laserBeam.Init(_beamRange, _beamStartWidth, _beamEndWidth);
     }
-    
+
     public void FlyingKick(Action callback)
     {
         StartCoroutine(StartFlyingKick(callback));
     }
-    private IEnumerator StartFlyingKick( Action callback)
+    private IEnumerator StartFlyingKick(Action callback)
     {
         _rigidbody.velocity = transform.forward * _dashSpeed;
         
@@ -45,7 +43,14 @@ public class AttackController : MonoBehaviour
     
     public void FireBeam(Action callback)
     {
-        Debug.Log("BEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEAAAAAM");
+        StartCoroutine(StartLaserBeam(callback));
+    }
+
+    private IEnumerator StartLaserBeam(Action callback)
+    {
+        _laserBeam.Fire();
+        yield return new WaitForSeconds(_beamDuration);
+        _laserBeam.Stop();
         callback();
     }
 }
