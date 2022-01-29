@@ -9,8 +9,6 @@ public class AttackController : MonoBehaviour
     [Header("Beam Parameters")]
     [SerializeField] private LaserBeam _laserBeam;
     [SerializeField] private float _beamRange;
-    [SerializeField] private float _beamStartWidth;
-    [SerializeField] private float _beamEndWidth;
     [SerializeField] private float _beamDuration;
 
     [Header("Dash Parameters")]
@@ -19,7 +17,7 @@ public class AttackController : MonoBehaviour
 
     private void Start()
     {
-        _laserBeam.Init(_beamRange, _beamStartWidth, _beamEndWidth);
+        _laserBeam.Init(_beamRange);
     }
 
     public void FlyingKick(Action callback)
