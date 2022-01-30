@@ -122,6 +122,7 @@ public class Drawing : MonoBehaviour
         Vector2 t = p1;
         float frac = 1 / Mathf.Sqrt(Mathf.Pow(p2.x - p1.x, 2) + Mathf.Pow(p2.y - p1.y, 2));
         float ctr = 0;
+        int pixelz = 0;
 
         while ((int)t.x != (int)p2.x || (int)t.y != (int)p2.y)
         {
@@ -129,9 +130,7 @@ public class Drawing : MonoBehaviour
             ctr += frac;
 
             pixelsCovered++;
-            TM.rage = Mathf.Min(TM.rage+1, TM.MaxRage * 10);
-            TM.RageCounter.SetCounter(TM.rage/10);
-            TM.RagePointerTransform.eulerAngles = new Vector3(0f, 0f, 17f - 185f*TM.rage / 10 / TM.MaxRage);
+            pixelz++;
 
             Vector2[] brushpixels = GetBrushPixels((int)t.x, (int)t.y);
 
@@ -140,6 +139,9 @@ public class Drawing : MonoBehaviour
 
             
         }
+
+        Rage.value = Mathf.Min(Rage.value + pixelz/10, Rage.MaxRage );
+        
 
         TM.UpdatePaperSigningProgress((100 * pixelsCovered) / pixelsNeeded);
     }
