@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class CityPlayerController : MonoBehaviour
@@ -12,6 +11,7 @@ public class CityPlayerController : MonoBehaviour
     private Vector2 _moveInput = Vector2.zero;
 
     private bool _isDashing = false;
+    private bool _isCharging = false;
     private bool _isBeaming = false;
 
     private void Awake()
@@ -31,15 +31,21 @@ public class CityPlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (_isDashing || _isBeaming)
+        if (_isCharging && !_playersControls.City.Beam.IsPressed())
+        {
+            _attackController.StopCharging();
+            DoneCharging();
+        }
+        
+        if (_isDashing || _isCharging || _isBeaming)
         {
             return;
         }
 
         if (_playersControls.City.Beam.triggered)
         {
-            _isBeaming = true;
-            _attackController.FireBeam(BeamComplete);
+            _isCharging = true;
+            _attackController.FireBeam(DoneCharging, Firing, Done);
             return;
         }
 
@@ -51,11 +57,21 @@ public class CityPlayerController : MonoBehaviour
         }
     }
 
-    private void BeamComplete()
+    private void DoneCharging()
+    {
+        _isCharging = false;
+    }
+    
+    private void Firing()
+    {
+        _isBeaming = true;
+    }
+    
+    private void Done()
     {
         _isBeaming = false;
     }
-    
+
     private void AttackingComplete()
     {
         _isDashing = false;

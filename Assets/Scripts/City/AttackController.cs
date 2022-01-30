@@ -8,12 +8,15 @@ public class AttackController : MonoBehaviour
 
     [Header("Beam Parameters")]
     [SerializeField] private LaserBeam _laserBeam;
+    [SerializeField] private AudioClip _chargeSound;
     [SerializeField] private float _beamRange;
     [SerializeField] private float _beamDuration;
 
     [Header("Dash Parameters")]
     [SerializeField] private float _dashSpeed;
     [SerializeField] private float _dashDuration;
+    private Coroutine _chargingCoroutine;
+
 
     private void Start()
     {
@@ -39,16 +42,31 @@ public class AttackController : MonoBehaviour
         callback();
     }
     
-    public void FireBeam(Action callback)
+    public void FireBeam(Action stopCharging, Action fire, Action stopFire)
     {
-        StartCoroutine(StartLaserBeam(callback));
+        _chargingCoroutine = StartCoroutine(StartCharging(stopCharging, fire, stopFire));
     }
 
-    private IEnumerator StartLaserBeam(Action callback)
+    public void StopCharging()
     {
+        StopCoroutine(_chargingCoroutine);
+        _laserBeam.StopCharge();
+    }
+    
+    private IEnumerator StartCharging(Action stopCharging, Action fire, Action stopFire)
+    {
+        _laserBeam.Charge();
+        yield return new WaitForSeconds(_chargeSound.length);
+        yield return StartLaserBeam(fire, stopFire);
+        stopCharging();
+    }
+    
+    private IEnumerator StartLaserBeam(Action fire, Action stopFire)
+    {
+        fire();
         _laserBeam.Fire();
         yield return new WaitForSeconds(_beamDuration);
         _laserBeam.Stop();
-        callback();
+        stopFire();
     }
 }
