@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class volumeSlider : MonoBehaviour
@@ -29,9 +26,6 @@ public class volumeSlider : MonoBehaviour
         // fixe
         if (level == min) level = -80f;
 
-
         MasterMixer.SetFloat("MainVolume", level);
-
-        EventSystem.current.SetSelectedGameObject(null);
     }
 }
