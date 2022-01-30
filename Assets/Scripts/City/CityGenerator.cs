@@ -5,6 +5,7 @@ public class CityGenerator : MonoBehaviour
 {
     [SerializeField] private Transform _parent = null;
     [SerializeField] private GameObject _cityTilePrefab = null;
+    [SerializeField] private RandomSFX _destroySfx = null;
     
     private const float X_SIZE = 10;
     private const float Y_SIZE = 10;

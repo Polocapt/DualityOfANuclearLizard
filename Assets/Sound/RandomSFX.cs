@@ -12,7 +12,6 @@ public class RandomSFX : MonoBehaviour
     {
         sources = GetComponents<AudioSource>();
     }
-
     
     public void TriggerRandomSound()
     {

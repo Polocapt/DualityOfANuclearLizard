@@ -19,6 +19,8 @@ public class LaserBeam : MonoBehaviour
             {
                 if (hit.collider.tag.Equals("Building"))
                 {
+                    FindObjectOfType<RandomSFX>().TriggerRandomSound();
+
                     Destroy(hit.collider.gameObject);
                 }
             }

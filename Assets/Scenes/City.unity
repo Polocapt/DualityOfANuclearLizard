@@ -9911,6 +9911,63 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1001 &779973597
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6731834279086177155, guid: d0a0c4b245908d9488495a6a3617b984, type: 3}
+      propertyPath: m_Name
+      value: StepsSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731834279086177212, guid: d0a0c4b245908d9488495a6a3617b984, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731834279086177212, guid: d0a0c4b245908d9488495a6a3617b984, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731834279086177212, guid: d0a0c4b245908d9488495a6a3617b984, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731834279086177212, guid: d0a0c4b245908d9488495a6a3617b984, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731834279086177212, guid: d0a0c4b245908d9488495a6a3617b984, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731834279086177212, guid: d0a0c4b245908d9488495a6a3617b984, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731834279086177212, guid: d0a0c4b245908d9488495a6a3617b984, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731834279086177212, guid: d0a0c4b245908d9488495a6a3617b984, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731834279086177212, guid: d0a0c4b245908d9488495a6a3617b984, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731834279086177212, guid: d0a0c4b245908d9488495a6a3617b984, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731834279086177212, guid: d0a0c4b245908d9488495a6a3617b984, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d0a0c4b245908d9488495a6a3617b984, type: 3}
 --- !u!1 &993768459
 GameObject:
   m_ObjectHideFlags: 0
@@ -14755,6 +14812,7 @@ MonoBehaviour:
   _attackController: {fileID: 1713056825}
   _rigidbody: {fileID: 1713056824}
   _speed: 50
+  _stepsSfx: {fileID: 1315557662}
 --- !u!4 &1025429704
 Transform:
   m_ObjectHideFlags: 0
@@ -14771,6 +14829,74 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1243415126
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 402206397967139412, guid: 4ff7d1ed44d53744baaf461e56a2051c, type: 3}
+      propertyPath: m_Name
+      value: DestroySFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 402206397967139421, guid: 4ff7d1ed44d53744baaf461e56a2051c, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 402206397967139421, guid: 4ff7d1ed44d53744baaf461e56a2051c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 402206397967139421, guid: 4ff7d1ed44d53744baaf461e56a2051c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 402206397967139421, guid: 4ff7d1ed44d53744baaf461e56a2051c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 402206397967139421, guid: 4ff7d1ed44d53744baaf461e56a2051c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 402206397967139421, guid: 4ff7d1ed44d53744baaf461e56a2051c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 402206397967139421, guid: 4ff7d1ed44d53744baaf461e56a2051c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 402206397967139421, guid: 4ff7d1ed44d53744baaf461e56a2051c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 402206397967139421, guid: 4ff7d1ed44d53744baaf461e56a2051c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 402206397967139421, guid: 4ff7d1ed44d53744baaf461e56a2051c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 402206397967139421, guid: 4ff7d1ed44d53744baaf461e56a2051c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4ff7d1ed44d53744baaf461e56a2051c, type: 3}
+--- !u!114 &1315557662 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6731834279086177208, guid: d0a0c4b245908d9488495a6a3617b984, type: 3}
+  m_PrefabInstance: {fileID: 779973597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db74294dd8aee5f4686e6b0fd0b57aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1607593970
 GameObject:
   m_ObjectHideFlags: 0
@@ -14888,6 +15014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parent: {fileID: 1661736043}
   _cityTilePrefab: {fileID: 4768071507062490973, guid: b25dddfe74c823b44a0a9afb260b56db, type: 3}
+  _destroySfx: {fileID: 0}
 --- !u!1 &1713056818
 GameObject:
   m_ObjectHideFlags: 0
@@ -15021,8 +15148,6 @@ MonoBehaviour:
   _rigidbody: {fileID: 1713056824}
   _laserBeam: {fileID: 2109495369}
   _beamRange: 100
-  _beamStartWidth: 4
-  _beamEndWidth: 8
   _beamDuration: 1
   _dashSpeed: 90
   _dashDuration: 1.5

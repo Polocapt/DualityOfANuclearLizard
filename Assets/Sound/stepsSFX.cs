@@ -12,43 +12,27 @@ public class stepsSFX : MonoBehaviour
     bool CancelStepping = false;
 
     AudioSource[] sources;
-    // Start is called before the first frame update
     void Start()
     {
         sources = GetComponents<AudioSource>();
         StartCoroutine(StepSound());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (TestMode)
-        {
-            Stepping = Input.GetMouseButton(0);
-        }
-    }
-
-    IEnumerator StepSound()
+    
+    private IEnumerator StepSound()
     {
         while (!CancelStepping)
         {
             if (Stepping)
             {
                 int pick = Random.Range(0, sources.Length);
-                //Debug.Log(pick);
                 AudioSource src = sources[pick];
+                
                 float pitch = Random.Range(1f - pitchDeviation, 1f + pitchDeviation);
-
                 src.pitch = pitch;
                 src.Play();
-
-                
             }
             
-
             yield return new WaitForSeconds(StepRate);
         }
-
-        yield break;
     }
 }
