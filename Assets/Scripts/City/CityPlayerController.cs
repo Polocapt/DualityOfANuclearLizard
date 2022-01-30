@@ -11,6 +11,8 @@ public class CityPlayerController : MonoBehaviour
     [SerializeField] private int _kickRageCost = 50;
     [SerializeField] private int _beamRageCost = 200;
     
+    [SerializeField] private AudioSource _error;
+    
     private PlayerControls _playersControls = null;
     private Vector2 _moveInput = Vector2.zero;
 
@@ -56,7 +58,7 @@ public class CityPlayerController : MonoBehaviour
                 return;    
             }
 
-            Debug.Log("Not Enough Rage for beam");
+            Error();
         }
 
         if (_playersControls.City.FlyingKick.triggered)
@@ -69,7 +71,16 @@ public class CityPlayerController : MonoBehaviour
                 Rage.value -= _kickRageCost;
                 return;
             }
-            Debug.Log("Not Enough Rage for Kick");
+
+            Error();
+        }
+    }
+
+    private void Error()
+    {
+        if (!_error.isPlaying)
+        {
+            _error.Play();
         }
     }
 
@@ -100,7 +111,6 @@ public class CityPlayerController : MonoBehaviour
         _moveInput = _playersControls.City.Movement.ReadValue<Vector2>();
 
         _animator.SetBool("IsWalking", _moveInput.sqrMagnitude > 0.1f);
-        _animator.SetFloat("Speed", _moveInput.magnitude);
         
         _stepsSfx.Stepping = _moveInput.sqrMagnitude > 0.1f;
 
