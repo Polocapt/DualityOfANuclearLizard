@@ -2322,7 +2322,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7769517, y: 1}
+    m_SensorSize: {x: 1.7785548, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2338,7 +2338,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607593970}
-  m_LocalRotation: {x: 0.44703236, y: -0.014901859, z: 0.007448447, w: 0.8943627}
+  m_LocalRotation: {x: 0.44703236, y: -0.014901894, z: 0.0074484646, w: 0.8943627}
   m_LocalPosition: {x: 1, y: 40, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3185,7 +3185,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006074634}
-  m_LocalRotation: {x: 0.44703236, y: -0.014901859, z: 0.007448447, w: 0.8943627}
+  m_LocalRotation: {x: 0.44703236, y: -0.014901894, z: 0.0074484646, w: 0.8943627}
   m_LocalPosition: {x: 1, y: 40, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3596,6 +3596,10 @@ PrefabInstance:
       propertyPath: _speed
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 7175232565357900000, guid: 82adc31dc86098443b62d38a6b0243ba, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 58464725}
     - target: {fileID: 7175232565357900000, guid: 82adc31dc86098443b62d38a6b0243ba, type: 3}
       propertyPath: _stepsSfx
       value: 

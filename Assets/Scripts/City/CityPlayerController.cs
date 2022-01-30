@@ -6,6 +6,7 @@ public class CityPlayerController : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody = null;
     [SerializeField] private float _speed = 1f;
     [SerializeField] private stepsSFX _stepsSfx;
+    [SerializeField] private Animator _animator;
 
     [SerializeField] private int _kickRageCost = 50;
     [SerializeField] private int _beamRageCost = 200;
@@ -16,11 +17,11 @@ public class CityPlayerController : MonoBehaviour
     private bool _isDashing = false;
     private bool _isCharging = false;
     private bool _isBeaming = false;
-
+    
+    
     private void Awake()
     {
         _playersControls = new PlayerControls();
-        Rage.value = 500;
     }
 
     private void OnEnable()
@@ -98,6 +99,9 @@ public class CityPlayerController : MonoBehaviour
 
         _moveInput = _playersControls.City.Movement.ReadValue<Vector2>();
 
+        _animator.SetBool("IsWalking", _moveInput.sqrMagnitude > 0.1f);
+        _animator.SetFloat("Speed", _moveInput.magnitude);
+        
         _stepsSfx.Stepping = _moveInput.sqrMagnitude > 0.1f;
 
         _rigidbody.velocity = new Vector3(_moveInput.x, 0, _moveInput.y) * _speed;
