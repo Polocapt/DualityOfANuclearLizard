@@ -19,7 +19,7 @@ getOnTheBall: [specificPerson], @@ [reproche] @@ Get on the ball.;
 
 randomNumber: <random1>; <random2>; <random3>;
 
-reproche: My cat is hungry.; Knight to d6.; This coffee is terrible.; There's a fire on the second floor;
+reproche: My cat is still hungry.; Knight to d6.; This coffee is terrible.; There's a fire on the second floor;
 
 canYouBelieve: [specificPerson], @@ [somethingCrazy] Can you believe it?;
 
