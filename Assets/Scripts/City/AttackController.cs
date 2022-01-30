@@ -11,16 +11,23 @@ public class AttackController : MonoBehaviour
     [SerializeField] private AudioClip _chargeSound;
     [SerializeField] private float _beamRange;
     [SerializeField] private float _beamDuration;
+    [ColorUsage(true,true)]
+    [SerializeField] private Color _maxIntensity;
+    [SerializeField] private Renderer _renderer;
 
     [Header("Dash Parameters")]
     [SerializeField] private float _dashSpeed;
     [SerializeField] private float _dashDuration;
+
+    private const int CRYSTAL_INDEX = 3;
+    private Color _normalIntensity;
 
     private Coroutine _chargingCoroutine;
 
     private void Start()
     {
         _laserBeam.Init(_beamRange);
+        _normalIntensity = _renderer.materials[CRYSTAL_INDEX].color;
     }
 
     public void FlyingKick(Action callback)
@@ -51,12 +58,21 @@ public class AttackController : MonoBehaviour
     {
         StopCoroutine(_chargingCoroutine);
         _laserBeam.StopCharge();
+        _renderer.materials[CRYSTAL_INDEX].color = _normalIntensity;
     }
     
     private IEnumerator StartCharging(Action stopCharging, Action fire, Action stopFire)
     {
         _laserBeam.Charge();
-        yield return new WaitForSeconds(_chargeSound.length);
+
+        float frameCount = 0;
+        while (frameCount < _chargeSound.length)
+        {
+            frameCount += Time.deltaTime;
+
+            _renderer.materials[CRYSTAL_INDEX].color = Color.Lerp(_normalIntensity, _maxIntensity, frameCount / _chargeSound.length);
+            yield return new WaitForEndOfFrame();
+        }
         StartCoroutine(StartLaserBeam(fire, stopFire));
         stopCharging();
     }
@@ -65,7 +81,15 @@ public class AttackController : MonoBehaviour
     {
         fire();
         _laserBeam.Fire();
-        yield return new WaitForSeconds(_beamDuration);
+        
+        float frameCount = 0;
+        while (frameCount < _beamDuration)
+        {
+            frameCount += Time.deltaTime;
+
+            _renderer.materials[CRYSTAL_INDEX].color = Color.Lerp(_maxIntensity, _normalIntensity, frameCount / _beamDuration);
+            yield return new WaitForEndOfFrame();
+        }
         _laserBeam.Stop();
         stopFire();
     }
