@@ -9856,8 +9856,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Buildings Destroyed: 1000'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 40dabb1eb2ff86249908c25c82502b21, type: 2}
+  m_sharedMaterial: {fileID: 1154926810770481854, guid: 40dabb1eb2ff86249908c25c82502b21, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9881,7 +9881,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.75
+  m_fontSize: 21.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -15804,8 +15804,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Time: 5:00PM'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 40dabb1eb2ff86249908c25c82502b21, type: 2}
+  m_sharedMaterial: {fileID: 1154926810770481854, guid: 40dabb1eb2ff86249908c25c82502b21, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15829,7 +15829,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49.1
+  m_fontSize: 21.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -16072,7 +16072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 1898289673}
-  MinuteLength: 0.4
+  MinuteLength: 0.1
 --- !u!1 &2006074634
 GameObject:
   m_ObjectHideFlags: 0
@@ -16425,7 +16425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2365728837851550407, guid: 18c3fbb8c65ab3440b9a9aa92968b90b, type: 3}
       propertyPath: m_Name
-      value: WInd
+      value: Wind
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18c3fbb8c65ab3440b9a9aa92968b90b, type: 3}
