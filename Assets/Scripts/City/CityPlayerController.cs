@@ -20,6 +20,7 @@ public class CityPlayerController : MonoBehaviour
     private void Awake()
     {
         _playersControls = new PlayerControls();
+        Rage.value = 500;
     }
 
     private void OnEnable()
