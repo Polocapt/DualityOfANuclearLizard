@@ -83,8 +83,12 @@ public class TaskManager : MonoBehaviour
 
         // the day is over!
         TimeDisplay.SetString("5:00 PM");
-        GameObject DrawingArea = PM.CurrentPaper.GetComponentInChildren<Drawing>().gameObject;
-        Destroy(DrawingArea);
+        if (PM.CurrentPaper != null)
+        {
+            GameObject DrawingArea = PM.CurrentPaper.GetComponentInChildren<Drawing>().gameObject;
+            Destroy(DrawingArea);
+        }
+        
         GameObject.Find("granulator").GetComponent<granulator>().playing = false;
         PaperPercent.gameObject.SetActive(false);
         StampToContinuePrompt.gameObject.SetActive(false);
