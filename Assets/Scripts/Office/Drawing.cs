@@ -13,6 +13,7 @@ public class Drawing : MonoBehaviour
     public bool PageSigned = false;
     StampManager stamp;
     TaskManager TM;
+    GameObject hand;
 
     granulator granu;
 
@@ -23,6 +24,7 @@ public class Drawing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hand = GameObject.Find("PaperManager").GetComponent<PaperManager>().hand;
         granu = GameObject.Find("granulator").GetComponent<granulator>();
         pencil = GameObject.FindGameObjectWithTag("Pencil").GetComponent<Pencil>();
         stamp = GameObject.Find("Stamp").GetComponent<StampManager>();
@@ -65,6 +67,8 @@ public class Drawing : MonoBehaviour
                 {
                     // if mouse if over paper, display pencil over paper
                     pencil.gameObject.transform.eulerAngles = pencil.drawingAngle;
+                    if(!stamp.stamping) hand.SetActive(true);
+                    hand.gameObject.transform.position = hit.point;
                     pencil.gameObject.transform.position = hit.point;
 
                     Vector2 coord = WorldPosToTextureCoord(hit.point);
@@ -91,8 +95,7 @@ public class Drawing : MonoBehaviour
                 else
                 {
                     // if mouse is not over paper, put pencil back
-                    pencil.gameObject.transform.position = pencil.restPosition;
-                    pencil.gameObject.transform.eulerAngles = pencil.restAngle;
+                    RestPencil();
                     granu.playing = false;
                 }
             }
@@ -104,6 +107,12 @@ public class Drawing : MonoBehaviour
             PageSigned = true;
         }
         
+    }
+
+    void RestPencil() {
+        pencil.gameObject.transform.position = pencil.restPosition;
+        pencil.gameObject.transform.eulerAngles = pencil.restAngle;
+        if(!stamp.stamping) hand.SetActive(false);
     }
 
     public void FinishDrawing()

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PaperManager : MonoBehaviour
 {
     public GameObject defaultpaper;
+    public GameObject hand;
     bool paperActive = false;
     public GameObject CurrentPaper;
     GameObject LastPaper;
@@ -83,11 +84,22 @@ public class PaperManager : MonoBehaviour
         paperActive = false;
 
         sfx.TriggerRandomSound();
-        
-        pencil.gameObject.transform.position = pencil.restPosition;
-        pencil.gameObject.transform.eulerAngles = pencil.restAngle;
+
+        RestPencil();
 
         StartCoroutine(StackPaper(LastPaper));
+    }
+
+    void RestPencil()
+    {
+        pencil.gameObject.transform.position = pencil.restPosition;
+        pencil.gameObject.transform.eulerAngles = pencil.restAngle;
+        hand.SetActive(false);
+    }
+
+    void GrabPencil()
+    {
+
     }
 
     IEnumerator StackPaper(GameObject lastpaper)

@@ -5,10 +5,11 @@ using UnityEngine;
 public class StampManager : MonoBehaviour
 {
     public bool StampingEnabled = false;
-    bool stamping = false;
+    public bool stamping = false;
     public PaperManager PM;
     public GameObject stampMark;
     public TaskManager TM;
+    public GameObject hand;
     float frameLength = 0.02f;
 
     public int wiggleFrames = 100;
@@ -60,11 +61,13 @@ public class StampManager : MonoBehaviour
         Vector3 ymotion = new Vector3(0f, deltaY, 0f);
         int halfFrames = Mathf.RoundToInt(0.5f * frames);
         Vector3 initialPosition = transform.position;
+        hand.SetActive(true);
 
         // stamp it!
         while (frames > 0)
         {
             transform.position += pathToCenter.normalized * vel;
+            hand.transform.position = transform.position;
             if (frames > halfFrames) transform.Translate(-ymotion);
             if (frames < halfFrames) transform.Translate(ymotion);
             frames--;
@@ -89,12 +92,15 @@ public class StampManager : MonoBehaviour
         {
             yield return new WaitForSeconds(frameLength);
             transform.position += -pathToCenter.normalized * vel * 2f;
+            hand.transform.position = transform.position;
             frames--;
         }
 
         // done stamping
         Debug.Log("Done Stamping!");
         transform.position = initialPosition;
+        hand.SetActive(false);
+        stamping = false;
 
         // pause for a sec
         yield return new WaitForSeconds(0.2f);

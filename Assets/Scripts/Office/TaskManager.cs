@@ -83,7 +83,7 @@ public class TaskManager : MonoBehaviour
 
         // the day is over!
         TimeDisplay.SetString("5:00 PM");
-
+        GameObject.Find("granulator").GetComponent<granulator>().playing = false;
         PaperPercent.gameObject.SetActive(false);
         StampToContinuePrompt.gameObject.SetActive(false);
         PM.stopIt = true;
@@ -108,7 +108,7 @@ public class TaskManager : MonoBehaviour
         GameObject.Find("door_sfx").GetComponent<AudioSource>().Play();
         DayIsOver.SetActive(true);
         bgm.Stop();
-
+        GameObject.Find("granulator").GetComponent<granulator>().playing = false;
         bool Continue = false;
         int maxWait = 2000;
 
