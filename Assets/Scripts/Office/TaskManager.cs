@@ -18,7 +18,7 @@ public class TaskManager : MonoBehaviour
     Vector3 LightPos;
 
     public int MaxRage = 2000;
-
+    public bool dayIsOver = false;
     public float deltaLightPos = 0.03f;
 
     public int rage = 0;
@@ -38,7 +38,7 @@ public class TaskManager : MonoBehaviour
     {
         TimeDisplay.gameObject.SetActive(true);
 
-        bool dayIsOver = false;
+        
         int minutes = 0;
         int hours = 9;
         string AMPM = "AM";
@@ -82,7 +82,9 @@ public class TaskManager : MonoBehaviour
         }
 
         // the day is over!
+        //dayIsOver
         TimeDisplay.SetString("5:00 PM");
+        
         if (PM.CurrentPaper != null)
         {
             GameObject DrawingArea = PM.CurrentPaper.GetComponentInChildren<Drawing>().gameObject;

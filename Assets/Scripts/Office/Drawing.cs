@@ -77,6 +77,7 @@ public class Drawing : MonoBehaviour
                     {
                         // mouse is pressed and over paper
                         //if (texture.GetPixel(Mathf.RoundToInt(coord.x), Mathf.RoundToInt(coord.y)).a == 0f)
+                        if(!TM.dayIsOver)
                         granu.playing = true;
 
                         if (LastMousePos == null)
