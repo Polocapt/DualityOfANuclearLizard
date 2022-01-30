@@ -18,6 +18,8 @@ public class AttackController : MonoBehaviour
     [Header("Dash Parameters")]
     [SerializeField] private float _dashSpeed;
     [SerializeField] private float _dashDuration;
+    [SerializeField] private Transform _transform;
+    [SerializeField] private Vector3 _offset = Vector3.zero;
 
     private const int CRYSTAL_INDEX = 3;
     private Color _normalIntensity;
@@ -38,13 +40,13 @@ public class AttackController : MonoBehaviour
     {
         _rigidbody.velocity = transform.forward * _dashSpeed;
         
-        transform.Rotate(new Vector3(-90, 0, 0));
-        _rigidbody.useGravity = false;
-        
-        yield return new WaitForSeconds(_dashDuration);
-        
+        _transform.Rotate(new Vector3(-90, 0, 0));
+        _transform.position += _offset;
         _rigidbody.useGravity = true;
-        transform.Rotate(new Vector3(90, 0, 0));
+        yield return new WaitForSeconds(_dashDuration);
+        _rigidbody.useGravity = false;
+        _transform.position -= _offset;
+        _transform.Rotate(new Vector3(90, 0, 0));
         
         callback();
     }

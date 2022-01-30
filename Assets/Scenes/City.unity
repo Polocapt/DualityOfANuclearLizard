@@ -460,7 +460,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 50, y: -20}
-  m_SizeDelta: {x: 450, y: 50}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &714457519
 MonoBehaviour:
@@ -632,6 +632,11 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 8381790036377391119, guid: 82adc31dc86098443b62d38a6b0243ba, type: 3}
   m_PrefabInstance: {fileID: 7175232565977423911}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1281141058 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7212855091482667872, guid: 82adc31dc86098443b62d38a6b0243ba, type: 3}
+  m_PrefabInstance: {fileID: 7175232565977423911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1315557662 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6731834279086177208, guid: d0a0c4b245908d9488495a6a3617b984, type: 3}
@@ -689,7 +694,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7762712, y: 1}
+    m_SensorSize: {x: 1.7767221, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -705,7 +710,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607593970}
-  m_LocalRotation: {x: 0.44703236, y: -0.0149019025, z: 0.007448469, w: 0.8943627}
+  m_LocalRotation: {x: 0.44703236, y: -0.014901859, z: 0.007448447, w: 0.8943627}
   m_LocalPosition: {x: 1, y: 40, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1212,7 +1217,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -50, y: -20}
-  m_SizeDelta: {x: 450, y: 50}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1967169145
 MonoBehaviour:
@@ -1265,7 +1270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 1898289673}
-  MinuteLength: 0.1
+  MinuteLength: 0.15
 --- !u!1 &2006074634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,7 +1349,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006074634}
-  m_LocalRotation: {x: 0.44703236, y: -0.0149019025, z: 0.007448469, w: 0.8943627}
+  m_LocalRotation: {x: 0.44703236, y: -0.014901859, z: 0.007448447, w: 0.8943627}
   m_LocalPosition: {x: 1, y: 40, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1548,6 +1553,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7175232565357900013, guid: 82adc31dc86098443b62d38a6b0243ba, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2cf62331cefc9a249b1b2db13a1fe09a, type: 3}
     - target: {fileID: 7175232565357900015, guid: 82adc31dc86098443b62d38a6b0243ba, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1597,9 +1606,25 @@ PrefabInstance:
       value: 15.51
       objectReference: {fileID: 0}
     - target: {fileID: 7175232566549351454, guid: 82adc31dc86098443b62d38a6b0243ba, type: 3}
+      propertyPath: _offset.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175232566549351454, guid: 82adc31dc86098443b62d38a6b0243ba, type: 3}
       propertyPath: _renderer
       value: 
       objectReference: {fileID: 1281141057}
+    - target: {fileID: 7175232566549351454, guid: 82adc31dc86098443b62d38a6b0243ba, type: 3}
+      propertyPath: _dashSpeed
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175232566549351454, guid: 82adc31dc86098443b62d38a6b0243ba, type: 3}
+      propertyPath: _transform
+      value: 
+      objectReference: {fileID: 1281141058}
+    - target: {fileID: 7175232566549351454, guid: 82adc31dc86098443b62d38a6b0243ba, type: 3}
+      propertyPath: _chargeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2cf62331cefc9a249b1b2db13a1fe09a, type: 3}
     - target: {fileID: 7175232566549351454, guid: 82adc31dc86098443b62d38a6b0243ba, type: 3}
       propertyPath: _maxIntensity.b
       value: 5.5529413
