@@ -26,6 +26,7 @@ public class menu : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(1);
+        Rage.value = 0;
     }
 
     public void OpenOptions()
