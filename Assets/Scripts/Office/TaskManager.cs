@@ -98,6 +98,7 @@ public class TaskManager : MonoBehaviour
 
         // fade in dark panel
         //Material mat = 
+        dark_panel.SetActive(true);
         Color c = dark_panel.GetComponent<UnityEngine.UI.Image>().color;
         AudioSource bgm = GameObject.Find("sfx").GetComponent<AudioSource>();
         float alpha = c.a;
