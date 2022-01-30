@@ -46,6 +46,7 @@ public class StampManager : MonoBehaviour
     {
         GameObject CurrentPage = PM.CurrentPaper;
         TM.StampTriggered();
+        if (CurrentPage == null) yield break;
 
         Vector3 pathToCenter = CurrentPage.transform.position - transform.position;
         float distanceToCenter = pathToCenter.magnitude;
