@@ -16,13 +16,8 @@ public class StampManager : MonoBehaviour
     public float wiggleAmplitude = 10f;
     public float wiggleRate = 10;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    [SerializeField] private float _rageStamp = 50;
+    
     void Update()
     {
         if (StampingEnabled && !TM.dayIsOver)
@@ -97,7 +92,8 @@ public class StampManager : MonoBehaviour
         }
 
         // done stamping
-        Debug.Log("Done Stamping!");
+        Rage.value = Mathf.Min(Rage.value + _rageStamp, Rage.MaxRage);
+        
         transform.position = initialPosition;
         hand.SetActive(false);
         stamping = false;
@@ -107,8 +103,6 @@ public class StampManager : MonoBehaviour
 
         // exit paper
         PM.GetComponent<PaperManager>().SendPaperToPile();
-
-        yield break;
     }
 
     public void ReadyToStamp()

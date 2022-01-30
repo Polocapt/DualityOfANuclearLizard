@@ -354,6 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PageSigned: 0
   pixelsNeeded: 750
+  _progressFactor: 0.65
 --- !u!1 &3916386004829671566
 GameObject:
   m_ObjectHideFlags: 0

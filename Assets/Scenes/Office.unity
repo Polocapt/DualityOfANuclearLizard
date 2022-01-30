@@ -4174,6 +4174,7 @@ MonoBehaviour:
   wiggleFrames: 20
   wiggleAmplitude: 8
   wiggleRate: 2
+  _rageStamp: 1
 --- !u!65 &1843284291
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4380,7 +4381,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PaperPercent: {fileID: 2098000051}
   AnswerPhonePercent: {fileID: 868669716}
-  RageCounter: {fileID: 0}
   TimeDisplay: {fileID: 48153346}
   StampToContinuePrompt: {fileID: 1461549043}
   dark_panel: {fileID: 1228372938}
