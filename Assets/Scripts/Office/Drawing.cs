@@ -128,8 +128,9 @@ public class Drawing : MonoBehaviour
             ctr += frac;
 
             pixelsCovered++;
-            TM.rage++;
+            TM.rage = Mathf.Min(TM.rage+1, TM.MaxRage * 10);
             TM.RageCounter.SetCounter(TM.rage/10);
+            TM.RagePointerTransform.eulerAngles = new Vector3(0f, 0f, 17f - 185f*TM.rage / 10 / TM.MaxRage);
 
             Vector2[] brushpixels = GetBrushPixels((int)t.x, (int)t.y);
 

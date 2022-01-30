@@ -12,7 +12,12 @@ public class TaskManager : MonoBehaviour
     public GameObject dark_panel;
     public PaperManager PM;
     public GameObject OutdoorLight;
+    public GameObject RagePointer;
+    public RectTransform RagePointerTransform;
+    public GameObject DayIsOver;
     Vector3 LightPos;
+
+    public int MaxRage = 2000;
 
     public float deltaLightPos = 0.03f;
 
@@ -24,6 +29,8 @@ public class TaskManager : MonoBehaviour
     void Start()
     {
         LightPos = OutdoorLight.transform.position;
+        RagePointerTransform = RagePointer.GetComponent<RectTransform>();
+        RagePointerTransform.eulerAngles = new Vector3(0f, 0f, 17f);
         StartCoroutine(UpdateTime());    
     }
 
@@ -99,7 +106,27 @@ public class TaskManager : MonoBehaviour
         }
 
         GameObject.Find("door_sfx").GetComponent<AudioSource>().Play();
+        DayIsOver.SetActive(true);
         bgm.Stop();
+
+        bool Continue = false;
+        int maxWait = 2000;
+
+        while (!Continue && maxWait>0)
+        {
+
+            if (Input.GetKey(KeyCode.Space))
+            {
+                Continue = true;
+            }
+
+            maxWait--;
+
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+
 
         yield break;
     }
