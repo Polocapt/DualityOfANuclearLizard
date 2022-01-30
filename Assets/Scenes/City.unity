@@ -3071,7 +3071,7 @@ MonoBehaviour:
   _panel: {fileID: 2042429766}
   _continueGo: {fileID: 1165271345}
   _rageMuliplierRage: 2
-  MinuteLength: 0.15
+  MinuteLength: 0.2
 --- !u!1 &2006074634
 GameObject:
   m_ObjectHideFlags: 0
