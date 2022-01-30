@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Drawing : MonoBehaviour
 {
@@ -21,7 +18,6 @@ public class Drawing : MonoBehaviour
     public int pixelsNeeded = 140;
     bool exiting = false;
 
-    [SerializeField] private float _progressFactor = 1f;
     
     // Start is called before the first frame update
     void Start()
@@ -59,8 +55,6 @@ public class Drawing : MonoBehaviour
     {
         if (!exiting &&!TM.dayIsOver)
         {
-
-        
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
@@ -79,8 +73,8 @@ public class Drawing : MonoBehaviour
                     {
                         // mouse is pressed and over paper
                         //if (texture.GetPixel(Mathf.RoundToInt(coord.x), Mathf.RoundToInt(coord.y)).a == 0f)
-                        if(!TM.dayIsOver)
-                        granu.playing = true;
+                        if(!TM.dayIsOver) 
+                            granu.playing = true;
 
                         if (LastMousePos == null)
                         {
@@ -110,7 +104,6 @@ public class Drawing : MonoBehaviour
             stamp.ReadyToStamp();
             PageSigned = true;
         }
-        
     }
 
     void RestPencil() {
@@ -124,7 +117,6 @@ public class Drawing : MonoBehaviour
         // page signing completed
         if (!exiting)
         {
-            
             exiting = true;
             GameObject.Find("PaperManager").GetComponent<PaperManager>().SendPaperToPile();
         }
@@ -149,15 +141,15 @@ public class Drawing : MonoBehaviour
 
             foreach (Vector2 pixel in brushpixels)
                 texture.SetPixel((int)pixel.x, (int)pixel.y, col);
-
-            
         }
 
         float progress = (100 * pixelsCovered) / pixelsNeeded;
         TM.UpdatePaperSigningProgress(progress);
 
-        if (p1 != p2)
-        Rage.value = Mathf.Min(Rage.value + _progressFactor, Rage.MaxRage );
+        float progressFactor = Mathf.Min(Rage.MaxRage/3500, 1);
+        
+        if (p1 != p2) 
+            Rage.value = Mathf.Min(Rage.value + progressFactor, Rage.MaxRage );
     }
 
     Vector2[] GetBrushPixels (int inputx, int inputy)
