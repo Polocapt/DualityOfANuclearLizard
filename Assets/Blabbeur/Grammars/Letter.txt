@@ -17,13 +17,17 @@ signature: Best CEO ever!; Head office; Anonymous;
 
 getOnTheBall: [specificPerson], @@ [reproche] @@ Get on the ball. @@ [ending];
 
+randomNumber: <random1>; <random2>; <random3>;
+
 reproche: my cat is hungry.; [somethingCrazy] Can you believe it?; Knight to d6.; This coffee is terrible.; There's a fire on the second floor;
 
 somethingCrazy: There's a bird out my window.; [specificPerson]'s new hair.; Kids these days.; I'm in Paris.;
 
-invoice: INVOICE @@ from [signature] @ to [invoiceTo] @@ [invoiceBody] @@ terms: net 30 @@ [invoiceEnding];
+invoice: [invoiceTitle] @@ from [signature] @ to [invoiceTo] @@ [invoiceBody] @@ [invoiceEnding] @@ [ending];
 
 invoiceEnding: thank you for your business; pay up; thank you for money soon;
+
+invoiceTitle: INVOICE; Invoice.; Seeking payment;
 
 invoiceTo: [specificPerson] [companyOccupation] [companyIdentifier];
 
@@ -31,8 +35,7 @@ companyIdentifier: corp.; ventures; industries; inc; coop; international; 2.0; ,
 
 companyOccupation: poultry; flooring; business; building; construction; banking; foods; berry; farming; paper; printing; boxes; trucks; math;
 
-invoiceBody: <random1> [invoiceItemAdjective] [invoiceItem];
-<random1> [invoiceItemAdjective] [invoiceItem] @ <random2> [invoiceItemAdjective] [invoiceItem]; <random1> [invoiceItemAdjective] [invoiceItem] @ <random2> [invoiceItemAdjective] [invoiceItem] @ <random3> [invoiceItemAdjective] [invoiceItem];
+invoiceBody: <random1> [invoiceItemAdjective] [invoiceItem] at $[randomNumber] each @ <random2> [invoiceItemAdjective] [invoiceItem] at $[randomNumber] each; <random1> [invoiceItemAdjective] [invoiceItem] @ <random2> [invoiceItemAdjective] [invoiceItem] @ <random3> [invoiceItemAdjective] [invoiceItem];
 
 invoiceItemAdjective: large; big; small; pack of; red; interesting; great; best ever;
 
