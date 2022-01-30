@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _building: {fileID: 6532804323489482213}
   _renderer: {fileID: 7734292059239131916}
+  _windowsIntensity: 15
 --- !u!1 &6532804323489482213
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0a1538f7aad714093789d29ac11c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _vfxPrefab: {fileID: 3069066300915611431, guid: adf20ce230b63b1438ff5906111449e0, type: 3}
 --- !u!1001 &8976848368226547592
 PrefabInstance:
   m_ObjectHideFlags: 0

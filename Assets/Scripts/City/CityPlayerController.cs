@@ -45,19 +45,29 @@ public class CityPlayerController : MonoBehaviour
             return;
         }
 
-        if (_playersControls.City.Beam.triggered && _beamRageCost <= Rage.value)
+        if (_playersControls.City.Beam.triggered)
         {
-            _isCharging = true;
-            _attackController.FireBeam(_beamRageCost, DoneCharging, Firing, Done);
-            return;
+            if (_beamRageCost <= Rage.value)
+            {
+                _isCharging = true;
+                _attackController.FireBeam(_beamRageCost, DoneCharging, Firing, Done);
+                return;    
+            }
+
+            Debug.Log("Not Enough Rage for beam");
         }
 
-        if (_playersControls.City.FlyingKick.triggered && _kickRageCost <= Rage.value)
+        if (_playersControls.City.FlyingKick.triggered)
         {
-            _stepsSfx.Stepping = false;
-            _isDashing = true;
-            _attackController.FlyingKick(AttackingComplete);
-            Rage.value -= _kickRageCost;
+            if (_kickRageCost <= Rage.value)
+            {
+                _stepsSfx.Stepping = false;
+                _isDashing = true;
+                _attackController.FlyingKick(AttackingComplete);
+                Rage.value -= _kickRageCost;
+                return;
+            }
+            Debug.Log("Not Enough Rage for Kick");
         }
     }
 
