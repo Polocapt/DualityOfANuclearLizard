@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ControlsFadeOut : MonoBehaviour
 {
     [SerializeField] private float _fadeTime = 3f;
+    [SerializeField] private float _delayBeforeFadeFirstTime = 5f;
     [SerializeField] private float _delayBeforeFade = 5f;
     [SerializeField] private Image _image = null;
     [SerializeField] private Image _image2 = null;
@@ -18,7 +19,8 @@ public class ControlsFadeOut : MonoBehaviour
 
     private IEnumerator FadeOut()
     {
-        yield return new WaitForSeconds(_delayBeforeFade);
+        float delay = Rage.MaxRage <= 1000 ? _delayBeforeFadeFirstTime : _delayBeforeFade;
+        yield return new WaitForSeconds(delay);
 
         Color c = _image.color;
         float alpha = c.a;
