@@ -6,14 +6,11 @@ public class TaskManager : MonoBehaviour
 {
     public CounterHandler PaperPercent;
     public CounterHandler AnswerPhonePercent;
-    public CounterHandler RageCounter;
     public CounterHandler TimeDisplay;
     public GameObject StampToContinuePrompt;
     public GameObject dark_panel;
     public PaperManager PM;
     public GameObject OutdoorLight;
-    public GameObject RagePointer;
-    public RectTransform RagePointerTransform;
     public GameObject DayIsOver;
     Vector3 LightPos;
 
@@ -25,12 +22,9 @@ public class TaskManager : MonoBehaviour
     
     public float MinuteLength = 0.4f;
     
-    // Start is called before the first frame update
     void Start()
     {
         LightPos = OutdoorLight.transform.position;
-        RagePointerTransform = RagePointer.GetComponent<RectTransform>();
-        RagePointerTransform.eulerAngles = new Vector3(0f, 0f, 17f);
         StartCoroutine(UpdateTime());    
     }
 
@@ -38,14 +32,9 @@ public class TaskManager : MonoBehaviour
     {
         TimeDisplay.gameObject.SetActive(true);
 
-        
         int minutes = 0;
         int hours = 9;
         string AMPM = "AM";
-
-
-        
-
 
         while (!dayIsOver)
         {
@@ -97,7 +86,6 @@ public class TaskManager : MonoBehaviour
         PM.stopIt = true;
 
         // fade in dark panel
-        //Material mat = 
         dark_panel.SetActive(true);
         Color c = dark_panel.GetComponent<UnityEngine.UI.Image>().color;
         AudioSource bgm = GameObject.Find("sfx").GetComponent<AudioSource>();
@@ -109,7 +97,6 @@ public class TaskManager : MonoBehaviour
             bgm.volume = 1f - alpha;
             c.a = alpha;
             dark_panel.GetComponent<UnityEngine.UI.Image>().color = c;
-            //mat.color = c;
             
             yield return new WaitForSeconds(0.1f);
         }
@@ -135,9 +122,6 @@ public class TaskManager : MonoBehaviour
         }
 
         UnityEngine.SceneManagement.SceneManager.LoadScene(2);
-
-
-        yield break;
     }
 
     public void StartSigningPaper()
@@ -147,7 +131,6 @@ public class TaskManager : MonoBehaviour
             PaperPercent.gameObject.SetActive(true);
             PaperPercent.SetCounterPercent(0);
         }
-        
     }
 
     public void UpdatePaperSigningProgress(float percent)

@@ -21,6 +21,8 @@ public class Drawing : MonoBehaviour
     public int pixelsNeeded = 140;
     bool exiting = false;
 
+    [SerializeField] private float _progressFactor = 1f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -151,11 +153,11 @@ public class Drawing : MonoBehaviour
             
         }
 
-        if(p1!=p2)
-        Rage.value = Mathf.Min(Rage.value + Mathf.Max(1, pixelz/10), Rage.MaxRage );
-        
+        float progress = (100 * pixelsCovered) / pixelsNeeded;
+        TM.UpdatePaperSigningProgress(progress);
 
-        TM.UpdatePaperSigningProgress((100 * pixelsCovered) / pixelsNeeded);
+        if (p1 != p2)
+        Rage.value = Mathf.Min(Rage.value + _progressFactor, Rage.MaxRage );
     }
 
     Vector2[] GetBrushPixels (int inputx, int inputy)
