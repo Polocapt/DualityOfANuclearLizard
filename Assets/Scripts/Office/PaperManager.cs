@@ -77,8 +77,12 @@ public class PaperManager : MonoBehaviour
     public void SendPaperToPile()
     {
         CurrentPaper.GetComponentInChildren<DrawingSurface>().drawingEnabled = false;
-        GameObject DrawingArea = CurrentPaper.GetComponentInChildren<Drawing>().gameObject;
-        Destroy(DrawingArea);
+        if (CurrentPaper != null)
+        {
+            GameObject DrawingArea = CurrentPaper.GetComponentInChildren<Drawing>().gameObject;
+            Destroy(DrawingArea);
+        }
+        
         LastPaper = CurrentPaper;
         CurrentPaper = null;
         paperActive = false;
