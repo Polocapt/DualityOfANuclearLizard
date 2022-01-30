@@ -1,4 +1,4 @@
-LetterBlab: [dearStaff];
+LetterBlab: [dearStaff]; [getOnTheBall]; [invoice];
 
 dearStaff: [greeting], @@[intro] @@[subject] @@[ending] @@[signature];
 
@@ -14,3 +14,26 @@ subject: Your weekends have been removed.; Parties are cancelled from now on.; N
 ending: Cheers,; With peace and love,; Do not be alarmed.; Don't forget to smile.; Thank you,; Just be aware I guess.;
 
 signature: Best CEO ever!; Head office; Anonymous;
+
+getOnTheBall: [specificPerson], @@ [reproche] @@ Get on the ball. @@ [ending];
+
+reproche: my cat is hungry.; [somethingCrazy] Can you believe it?; Knight to d6.; This coffee is terrible.; There's a fire on the second floor;
+
+somethingCrazy: There's a bird out my window.; [specificPerson]'s new hair.; Kids these days.; I'm in Paris.;
+
+invoice: INVOICE @@ from [signature] @ to [invoiceTo] @@ [invoiceBody] @@ terms: net 30 @@ [invoiceEnding];
+
+invoiceEnding: thank you for your business; pay up; thank you for money soon;
+
+invoiceTo: [specificPerson] [companyOccupation] [companyIdentifier];
+
+companyIdentifier: corp.; ventures; industries; inc; coop; international; 2.0; , plus!; TM;
+
+companyOccupation: poultry; flooring; business; building; construction; banking; foods; berry; farming; paper; printing; boxes; trucks; math;
+
+invoiceBody: <random1> [invoiceItemAdjective] [invoiceItem];
+<random1> [invoiceItemAdjective] [invoiceItem] @ <random2> [invoiceItemAdjective] [invoiceItem]; <random1> [invoiceItemAdjective] [invoiceItem] @ <random2> [invoiceItemAdjective] [invoiceItem] @ <random3> [invoiceItemAdjective] [invoiceItem];
+
+invoiceItemAdjective: large; big; small; pack of; red; interesting; great; best ever;
+
+invoiceItem: paper rolls; pencils; specials; big ones; staplers; printers;
