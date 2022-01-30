@@ -14,7 +14,6 @@ public class TaskManager : MonoBehaviour
     public GameObject DayIsOver;
     Vector3 LightPos;
 
-    public int MaxRage = 2000;
     public bool dayIsOver = false;
     public float deltaLightPos = 0.03f;
 

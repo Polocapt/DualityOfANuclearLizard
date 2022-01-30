@@ -8,6 +8,7 @@ public class ContinueMenu : MonoBehaviour
     [SerializeField] private Button _nextDay;
     [SerializeField] private Button _mainMenu;
     [SerializeField] private TMP_Text _destroyedCount;
+    [SerializeField] private TMP_Text _maxRage;
 
     private void Start()
     {
@@ -15,9 +16,10 @@ public class ContinueMenu : MonoBehaviour
         _mainMenu.onClick.AddListener(LoadMainMenu);
     }
 
-    public void SetText(int counter)
+    public void SetText(int counter, int maxRage)
     {
         _destroyedCount.text = "Buildings Destroyed: " + counter;
+        _maxRage.text = "Max Rage +" + maxRage;
     }
     
     private void LoadMainMenu()

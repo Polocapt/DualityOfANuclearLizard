@@ -1,7 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CityTime : MonoBehaviour
@@ -9,9 +8,10 @@ public class CityTime : MonoBehaviour
     [SerializeField] private TMP_Text _text;
     [SerializeField] private Image _panel;
     [SerializeField] private GameObject _continueGo;
+    [SerializeField] private int _rageMuliplierRage = 2;  
     
     public float MinuteLength = 0.4f;
-
+    
     private void Start()
     {
         _continueGo.SetActive(false);
@@ -67,7 +67,10 @@ public class CityTime : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        _continueGo.GetComponent<ContinueMenu>().SetText(FindObjectOfType<BuildingCounter>().BuildingDestroyed);
+        int destroyedCount = FindObjectOfType<BuildingCounter>().BuildingDestroyed;
+        int bonusMaxRage = destroyedCount * _rageMuliplierRage;
+        Rage.MaxRage += bonusMaxRage;
+        _continueGo.GetComponent<ContinueMenu>().SetText(destroyedCount, bonusMaxRage);
         FindObjectOfType<CityPlayerController>().gameObject.SetActive(false);
         FindObjectOfType<stepsSFX>().Stepping = false;
         _continueGo.SetActive(true);
