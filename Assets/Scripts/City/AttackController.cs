@@ -15,8 +15,8 @@ public class AttackController : MonoBehaviour
     [Header("Dash Parameters")]
     [SerializeField] private float _dashSpeed;
     [SerializeField] private float _dashDuration;
-    private Coroutine _chargingCoroutine;
 
+    private Coroutine _chargingCoroutine;
 
     private void Start()
     {
@@ -57,7 +57,7 @@ public class AttackController : MonoBehaviour
     {
         _laserBeam.Charge();
         yield return new WaitForSeconds(_chargeSound.length);
-        yield return StartLaserBeam(fire, stopFire);
+        StartCoroutine(StartLaserBeam(fire, stopFire));
         stopCharging();
     }
     
