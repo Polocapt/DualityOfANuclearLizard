@@ -140,7 +140,8 @@ public class Drawing : MonoBehaviour
             
         }
 
-        Rage.value = Mathf.Min(Rage.value + pixelz/10, Rage.MaxRage );
+        if(p1!=p2)
+        Rage.value = Mathf.Min(Rage.value + Mathf.Max(1, pixelz/10), Rage.MaxRage );
         
 
         TM.UpdatePaperSigningProgress((100 * pixelsCovered) / pixelsNeeded);
