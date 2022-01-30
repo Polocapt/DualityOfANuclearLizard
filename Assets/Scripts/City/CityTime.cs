@@ -65,7 +65,6 @@ public class CityTime : MonoBehaviour
         {
             alpha += Time.deltaTime/duration;
             bgm.volume = (1f - alpha) * initVol;
-            //bgm.volume = 1f - alpha;
             c.a = alpha;
             _panel.color = c;
             yield return new WaitForEndOfFrame();
