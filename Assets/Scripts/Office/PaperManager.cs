@@ -79,8 +79,13 @@ public class PaperManager : MonoBehaviour
         CurrentPaper.GetComponentInChildren<DrawingSurface>().drawingEnabled = false;
         if (CurrentPaper != null)
         {
-            GameObject DrawingArea = CurrentPaper.GetComponentInChildren<Drawing>().gameObject;
-            Destroy(DrawingArea);
+            Drawing d = CurrentPaper.GetComponentInChildren<Drawing>();
+            if (d != null)
+            {
+                GameObject DrawingArea = d.gameObject;
+                Destroy(DrawingArea);
+            }
+            
         }
         
         LastPaper = CurrentPaper;
