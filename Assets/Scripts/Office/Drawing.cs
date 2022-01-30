@@ -51,7 +51,7 @@ public class Drawing : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!exiting &&!TM.dayIsOver)
         {
@@ -146,7 +146,7 @@ public class Drawing : MonoBehaviour
         float progress = (100 * pixelsCovered) / pixelsNeeded;
         TM.UpdatePaperSigningProgress(progress);
 
-        float progressFactor = Mathf.Min(Rage.MaxRage/4000, 1);
+        float progressFactor = Mathf.Min(Rage.MaxRage/1000, 5);
         
         if (p1 != p2) 
             Rage.value = Mathf.Min(Rage.value + progressFactor, Rage.MaxRage );
