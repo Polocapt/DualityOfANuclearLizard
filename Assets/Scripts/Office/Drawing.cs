@@ -93,6 +93,7 @@ public class Drawing : MonoBehaviour
                     // if mouse is not over paper, put pencil back
                     pencil.gameObject.transform.position = pencil.restPosition;
                     pencil.gameObject.transform.eulerAngles = pencil.restAngle;
+                    granu.playing = false;
                 }
             }
         }

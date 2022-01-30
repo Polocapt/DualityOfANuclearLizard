@@ -14,11 +14,13 @@ public class PaperManager : MonoBehaviour
     float stackHeight = 0f;
     float stackInterval = 0.04f;
     public bool stopIt = false;
+    RandomSFX sfx;
     Pencil pencil;
 
     // Start is called before the first frame update
     void Start()
     {
+        sfx = GetComponent<RandomSFX>();
         pencil = GameObject.FindGameObjectWithTag("Pencil").GetComponent<Pencil>();
     }
 
@@ -35,7 +37,9 @@ public class PaperManager : MonoBehaviour
     IEnumerator LaunchPaper()
     {
         // short pause before launching paper
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.8f);
+
+        sfx.TriggerRandomSound();
 
         GameObject newpaper = Instantiate(defaultpaper);
         newpaper.transform.position = transform.position;
@@ -77,6 +81,8 @@ public class PaperManager : MonoBehaviour
         LastPaper = CurrentPaper;
         CurrentPaper = null;
         paperActive = false;
+
+        sfx.TriggerRandomSound();
         
         pencil.gameObject.transform.position = pencil.restPosition;
         pencil.gameObject.transform.eulerAngles = pencil.restAngle;

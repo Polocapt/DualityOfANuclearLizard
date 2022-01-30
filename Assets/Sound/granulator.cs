@@ -60,7 +60,7 @@ public class granulator : MonoBehaviour
 
                 float startTime = Random.Range(0f, audioData.clip.length - minGrainLength);
                 float endTime = startTime + Mathf.Min(audioData.clip.length - startTime, Random.Range(minGrainLength, maxGrainLength));
-
+                //Debug.Log(startTime + ", " + endTime + ", "+audioData.clip.length);
                 audioData.time = startTime;
 
                 stopTimes.Add(endTime);
