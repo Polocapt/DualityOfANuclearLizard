@@ -1,19 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using TMPro;
 using UnityEngine;
 
 public class CounterHandler : MonoBehaviour
 {
-    public TMPro.TMP_Text CounterText;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public TMP_Text CounterText;
 
-    public void SetCounter(int input)
+    public void SetCounter(float input)
     {
-        CounterText.text = ""+input;
+        CounterText.text = ""+Math.Round(input);
     }
 
     public void SetCounterPercent(int input)

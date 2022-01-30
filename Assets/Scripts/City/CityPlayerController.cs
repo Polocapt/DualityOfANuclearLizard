@@ -6,6 +6,9 @@ public class CityPlayerController : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody = null;
     [SerializeField] private float _speed = 1f;
     [SerializeField] private stepsSFX _stepsSfx;
+
+    [SerializeField] private int _kickRageCost = 50;
+    [SerializeField] private int _beamRageCost = 200;
     
     private PlayerControls _playersControls = null;
     private Vector2 _moveInput = Vector2.zero;
@@ -42,18 +45,19 @@ public class CityPlayerController : MonoBehaviour
             return;
         }
 
-        if (_playersControls.City.Beam.triggered)
+        if (_playersControls.City.Beam.triggered && _beamRageCost <= Rage.value)
         {
             _isCharging = true;
-            _attackController.FireBeam(DoneCharging, Firing, Done);
+            _attackController.FireBeam(_beamRageCost, DoneCharging, Firing, Done);
             return;
         }
 
-        if (_playersControls.City.FlyingKick.triggered)
+        if (_playersControls.City.FlyingKick.triggered && _kickRageCost <= Rage.value)
         {
             _stepsSfx.Stepping = false;
             _isDashing = true;
             _attackController.FlyingKick(AttackingComplete);
+            Rage.value -= _kickRageCost;
         }
     }
 

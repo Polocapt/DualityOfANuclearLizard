@@ -25,6 +25,7 @@ public class AttackController : MonoBehaviour
     private Color _normalIntensity;
 
     private Coroutine _chargingCoroutine;
+    private int _beamCost = 0;
 
     private void Start()
     {
@@ -51,8 +52,9 @@ public class AttackController : MonoBehaviour
         callback();
     }
     
-    public void FireBeam(Action stopCharging, Action fire, Action stopFire)
+    public void FireBeam(int beamCost, Action stopCharging, Action fire, Action stopFire)
     {
+        _beamCost = beamCost;
         _chargingCoroutine = StartCoroutine(StartCharging(stopCharging, fire, stopFire));
     }
 
@@ -83,15 +85,20 @@ public class AttackController : MonoBehaviour
     {
         fire();
         _laserBeam.Fire();
-        
+
+        float initValue = Rage.value;
         float frameCount = 0;
         while (frameCount < _beamDuration)
         {
             frameCount += Time.deltaTime;
 
+            Rage.value -= _beamCost * (Time.deltaTime / _beamDuration);
+            
             _renderer.materials[CRYSTAL_INDEX].color = Color.Lerp(_maxIntensity, _normalIntensity, frameCount / _beamDuration);
             yield return new WaitForEndOfFrame();
         }
+
+        Rage.value = initValue - _beamCost;
         _laserBeam.Stop();
         stopFire();
     }

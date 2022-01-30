@@ -30,7 +30,7 @@ public class CityTime : MonoBehaviour
         {
             string extrazero = "";
             if (minutes < 10) extrazero = "0";
-            string time = "Time: " + hours + ":" + extrazero+minutes + " " + AMPM;
+            string time = hours + ":" + extrazero+minutes + " " + AMPM;
             _text.text = time;
 
             minutes++;
@@ -48,7 +48,7 @@ public class CityTime : MonoBehaviour
             yield return new WaitForSeconds(MinuteLength);
         }
         
-        _text.text = "Time: " + hours + ":" + "0"+minutes + " " + AMPM;;
+        _text.text = hours + ":" + "0"+minutes + " " + AMPM;;
 
         StartCoroutine(FadeIn());
     }
