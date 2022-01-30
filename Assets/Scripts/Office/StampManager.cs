@@ -25,7 +25,7 @@ public class StampManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (StampingEnabled)
+        if (StampingEnabled && !TM.dayIsOver)
         {
             if (Input.GetMouseButton(0))
             {
