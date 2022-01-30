@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 541a980ff9765594c816ebf8b40d073c, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -4387,7 +4387,6 @@ MonoBehaviour:
   PM: {fileID: 1351356681}
   OutdoorLight: {fileID: 1318554113}
   DayIsOver: {fileID: 1765734651}
-  MaxRage: 2000
   dayIsOver: 0
   deltaLightPos: 0.03
   rage: 0
