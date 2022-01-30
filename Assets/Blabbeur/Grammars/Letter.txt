@@ -29,7 +29,9 @@ chessLocation: d6; e3; a7; b3; g1; c4; f5; d2; e1; a6; b2; g5; c3; f7;
 
 canYouBelieve: [specificPerson], @@ [somethingCrazy] Can you believe it?;
 
-somethingCrazy: There's a bird out my window.; [specificPerson]'s new hair.; Kids these days.; I'm in Paris.;
+somethingCrazy: There's a bird out my window.; [specificPerson]'s new hair.; Kids these days.; I'm in [touristDestination].;
+
+touristDestination: Paris; New York; London; Moscow; Bangkok; Tokyo; Montreal;
 
 invoice: [invoiceTitle] @@ from [signature] @ to [invoiceTo] @@ [invoiceBody] @@ [invoiceEnding];
 

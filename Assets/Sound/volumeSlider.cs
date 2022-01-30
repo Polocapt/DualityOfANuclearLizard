@@ -8,6 +8,7 @@ public class volumeSlider : MonoBehaviour
 {
     public AudioMixer MasterMixer;
     Slider VolumeSlider;
+
     static float level = 0f;
     static float value = 1f;
     // Start is called before the first frame update
@@ -20,8 +21,14 @@ public class volumeSlider : MonoBehaviour
     public void UpdateMainVolume()
     {
         value = VolumeSlider.value;
-        level = 1f- VolumeSlider.value;
-        level = - 80f* Mathf.Pow(level, 3);
+
+        float min = -32f;
+        level = min * (1f - VolumeSlider.value);
+
+        // fixe
+        if (level == min) level = -80f;
+
+
         MasterMixer.SetFloat("MainVolume", level);
     }
 }
