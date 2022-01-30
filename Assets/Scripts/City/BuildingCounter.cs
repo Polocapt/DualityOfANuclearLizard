@@ -4,7 +4,7 @@ using UnityEngine;
 public class BuildingCounter : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
-    private int _buildingDestroyed = 0;
+    [HideInInspector] public int BuildingDestroyed = 0;
 
     private void Start()
     {
@@ -13,12 +13,12 @@ public class BuildingCounter : MonoBehaviour
 
     public void AddBuildingCounter()
     {
-        _buildingDestroyed++;
+        BuildingDestroyed++;
         SetText();
     }
-
+    
     private void SetText()
     {
-        _text.text = "Buildings Destroyed: " + _buildingDestroyed;
+        _text.text = "Buildings Destroyed: " + BuildingDestroyed;
     }
 }
