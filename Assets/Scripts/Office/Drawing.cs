@@ -55,7 +55,7 @@ public class Drawing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!exiting)
+        if (!exiting &&!TM.dayIsOver)
         {
 
         
@@ -101,6 +101,7 @@ public class Drawing : MonoBehaviour
                 }
             }
         }
+        else granu.playing = false;
 
         if (!PageSigned && pixelsCovered > pixelsNeeded)// && !Input.GetMouseButton(0))
         {
