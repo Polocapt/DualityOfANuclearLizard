@@ -19,7 +19,13 @@ getOnTheBall: [specificPerson], @@ [reproche] @@ Get on the ball.;
 
 randomNumber: <random1>; <random2>; <random3>;
 
-reproche: My cat is still hungry.; Knight to d6.; This coffee is terrible.; There's a fire on the second floor;
+reproche: My cat is still hungry.; [chessMove]; This coffee is terrible.; There's a fire on the second floor;
+
+chessMove: [chessPiece] to [chessLocation].;
+
+chessPiece: Knight; Rook; Pawn; Queen; King; Horsey; Bishop;
+
+chessLocation: d6; e3; a7; b3; g1; c4; f5; d2; e1; a6; b2; g5; c3; f7;
 
 canYouBelieve: [specificPerson], @@ [somethingCrazy] Can you believe it?;
 
