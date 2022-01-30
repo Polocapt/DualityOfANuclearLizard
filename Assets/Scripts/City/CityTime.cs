@@ -58,9 +58,13 @@ public class CityTime : MonoBehaviour
         Color c = _panel.color;
         float alpha = c.a;
         float duration = 2f;
+
+        AudioSource bgm = GameObject.Find("BGM").GetComponent<AudioSource>();
+        float initVol = bgm.volume;
         while (alpha < 1f)
         {
             alpha += Time.deltaTime/duration;
+            bgm.volume = (1f - alpha) * initVol;
             //bgm.volume = 1f - alpha;
             c.a = alpha;
             _panel.color = c;
