@@ -12,8 +12,6 @@ public class TaskManager : MonoBehaviour
     public GameObject dark_panel;
     public PaperManager PM;
     public GameObject OutdoorLight;
-    public GameObject RagePointer;
-    public RectTransform RagePointerTransform;
     public GameObject DayIsOver;
     Vector3 LightPos;
 
@@ -29,8 +27,6 @@ public class TaskManager : MonoBehaviour
     void Start()
     {
         LightPos = OutdoorLight.transform.position;
-        RagePointerTransform = RagePointer.GetComponent<RectTransform>();
-        RagePointerTransform.eulerAngles = new Vector3(0f, 0f, 17f);
         StartCoroutine(UpdateTime());    
     }
 
@@ -38,14 +34,9 @@ public class TaskManager : MonoBehaviour
     {
         TimeDisplay.gameObject.SetActive(true);
 
-        
         int minutes = 0;
         int hours = 9;
         string AMPM = "AM";
-
-
-        
-
 
         while (!dayIsOver)
         {
