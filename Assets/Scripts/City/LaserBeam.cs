@@ -16,14 +16,10 @@ public class LaserBeam : MonoBehaviour
     {
         if (Physics.SphereCast(transform.position,  3,transform.forward,out RaycastHit hit, _laserRange))
         {
-            if (hit.collider != null)
+            var destructable = hit.collider.GetComponent<Destructable>();
+            if (destructable != null)
             {
-                if (hit.collider.tag.Equals("Building"))
-                {
-                    FindObjectOfType<RandomSFX>().TriggerRandomSound();
-
-                    Destroy(hit.collider.gameObject);
-                }
+                destructable.DestroyBuilding();
             }
         }
     }

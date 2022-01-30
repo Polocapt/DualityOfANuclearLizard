@@ -21,6 +21,6 @@ public class RandomSFX : MonoBehaviour
         float pitch = Random.Range(1f - pitchDeviation, 1f + pitchDeviation);
 
         src.pitch = pitch;
-        src.Play();
+        //src.Play();
     }
 }
