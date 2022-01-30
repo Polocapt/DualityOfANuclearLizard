@@ -12,6 +12,8 @@ public class Drawing : MonoBehaviour
     TaskManager TM;
     GameObject hand;
 
+    public bool enableDrawing = false;
+
     granulator granu;
 
     int pixelsCovered = 0;
@@ -53,7 +55,7 @@ public class Drawing : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!exiting &&!TM.dayIsOver)
+        if (!exiting &&!TM.dayIsOver && enableDrawing)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -76,18 +78,16 @@ public class Drawing : MonoBehaviour
                         if(!TM.dayIsOver) 
                             granu.playing = true;
 
-                        if (LastMousePos == null)
-                        {
-                            LastMousePos = coord;
-                            return;
-                        }
+                        
 
                         DrawLine(coord, LastMousePos, Color.black);
                         texture.Apply();
+
+                        LastMousePos = coord;
                     }
                     else granu.playing = false;
 
-                    LastMousePos = coord;
+                    
                 }
                 else
                 {
@@ -124,6 +124,13 @@ public class Drawing : MonoBehaviour
 
     public void DrawLine(Vector2 p1, Vector2 p2, Color col)
     {
+
+        if (p1==null || p2 == null|| p1==Vector2.zero || p2==Vector2.zero)
+        {
+            
+            return;
+        }
+
         Vector2 t = p1;
         float frac = 1 / Mathf.Sqrt(Mathf.Pow(p2.x - p1.x, 2) + Mathf.Pow(p2.y - p1.y, 2));
         float ctr = 0;

@@ -71,14 +71,17 @@ public class PaperManager : MonoBehaviour
             yield return new WaitForSeconds(frameLength);
         }
 
+        drawingHandler.enableDrawing = true;
+
         yield break;
     }
 
     public void SendPaperToPile()
     {
-        CurrentPaper.GetComponentInChildren<DrawingSurface>().drawingEnabled = false;
+        
         if (CurrentPaper != null)
         {
+            CurrentPaper.GetComponentInChildren<DrawingSurface>().drawingEnabled = false;
             Drawing d = CurrentPaper.GetComponentInChildren<Drawing>();
             if (d != null)
             {
